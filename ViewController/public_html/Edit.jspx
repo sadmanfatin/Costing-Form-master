@@ -26,7 +26,7 @@
             <af:panelGroupLayout id="pgl1"
                                  layout="horizontal"
                                  styleClass="AFStretchWidth">
-              <af:panelFormLayout id="pfl1" maxColumns="4" rows="3">
+              <af:panelFormLayout id="pfl1" maxColumns="4" rows="6">
                 <f:facet name="footer">
                   <af:group id="g1">
                     <af:separator id="s1" rendered="false"/>
@@ -212,6 +212,20 @@
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PocId.format}"/>
                   </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Creation Date"
+                                         id="plam23">
+                  <af:outputText value="#{bindings.CreationDate.inputValue}"
+                                 id="ot51"
+                                 inlineStyle="font-size:small; font-weight:bold;">
+                    <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Created By"
+                                         id="plam24">
+                  <af:outputText value="#{bindings.CreatedByName.inputValue}"
+                                 id="ot52"
+                                 inlineStyle="font-size:small; font-weight:bold;"/>
                 </af:panelLabelAndMessage>
                 <af:inputText value="#{bindings.PocId.inputValue}"
                               label="#{bindings.PocId.hints.label}"

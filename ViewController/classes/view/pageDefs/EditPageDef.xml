@@ -579,5 +579,15 @@
     </attributeValues>
     <list IterBinding="XX_OM_POC_L_TVO1Iterator" StaticList="false"
           Uses="LOV_Shipment" id="Shipment" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="CreatedByName">
+      <AttrNames>
+        <Item Value="CreatedByName"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
