@@ -886,8 +886,7 @@ Double.parseDouble(String.valueOf(row.getAttribute("ManualPrice")));
         String itemType = null;
         ViewObject hvo = appM.getXX_OM_POC_H_TVO1();
         try {
-            itemType =
-                    hvo.getCurrentRow().getAttribute("ItemPurchaseType").toString();
+            itemType = hvo.getCurrentRow().getAttribute("ItemPurchaseType").toString();
         } catch (Exception e) {
             itemType = "Fabric";
             ;
@@ -902,34 +901,38 @@ Double.parseDouble(String.valueOf(row.getAttribute("ManualPrice")));
             name = "Fabric";
         }
 
-        System.out.println("ItemPurchaseType is_----------------->" +
-                           itemType);
-
-        System.out.println("Item name_----------------->" + name);
+        System.out.println("febricValue - ItemPurchaseType " + itemType);
+        System.out.println("febricValue - Item " + name);
+        
         double value = 0;
 
         String date = null;
+        String p_buyer = null;
         try {
             date = hvo.getCurrentRow().getAttribute("CreationDate").toString();
+            p_buyer = hvo.getCurrentRow().getAttribute("BuyerId").toString();
         } catch (Exception e) {
             ;
         }
-
-        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,:3); end;";
-        java.sql.CallableStatement cs =
-            appM.getDBTransaction().createCallableStatement(stmt, 1);
+        
+        System.out.println("febricValue - CreationDate " + date);
+        System.out.println("febricValue - BuyerId " + p_buyer);
+        
+        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,to_date(:3,'YYYY-MM-DD'),:4); end;";
+        java.sql.CallableStatement cs = appM.getDBTransaction().createCallableStatement(stmt, 1);
         try {
             cs.registerOutParameter(1, OracleTypes.NUMBER);
             cs.setString(2, name);
             cs.setString(3, date);
+            cs.setString(4, p_buyer);
             cs.execute();
             value = cs.getDouble(1);
             cs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("febric--------------with date---------------------price is" +
-                           value);
+        System.out.println("febricValue - fabric percent " + value);
+        System.out.println("-------------------------------------");
         return value;
 
         //end of if condition
@@ -941,26 +944,33 @@ Double.parseDouble(String.valueOf(row.getAttribute("ManualPrice")));
         ViewObject hvo = appM.getXX_OM_POC_H_TVO1();
 
         String date = null;
+        String p_buyer = null;
         try {
             date = hvo.getCurrentRow().getAttribute("CreationDate").toString();
+            p_buyer = hvo.getCurrentRow().getAttribute("BuyerId").toString();
         } catch (Exception e) {
             ;
         }
-        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,:3); end;";
-        java.sql.CallableStatement cs =
-            appM.getDBTransaction().createCallableStatement(stmt, 1);
+        
+        System.out.println("trimValue - (get)name " + name);
+        System.out.println("trimValue - (get)CreationDate " + date);
+        System.out.println("trimValue - (get)BuyerId " + p_buyer);
+        
+        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,to_date(:3,'YYYY-MM-DD'),:4); end;";
+        java.sql.CallableStatement cs = appM.getDBTransaction().createCallableStatement(stmt, 1);
         try {
             cs.registerOutParameter(1, OracleTypes.NUMBER);
             cs.setString(2, name);
             cs.setString(3, date);
+            cs.setString(4, p_buyer);
             cs.execute();
             value = cs.getDouble(1);
             cs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("trims-----------------with date------------------price is" +
-                           value);
+        System.out.println("trimValue - trim percent " + value);
+        System.out.println("-------------------------------------");
         return value;
     }
 
@@ -970,33 +980,35 @@ Double.parseDouble(String.valueOf(row.getAttribute("ManualPrice")));
         ViewObject hvo = appM.getXX_OM_POC_H_TVO1();
 
         String date = null;
+        String p_buyer = null;
         try {
             date = hvo.getCurrentRow().getAttribute("CreationDate").toString();
+            p_buyer = hvo.getCurrentRow().getAttribute("BuyerId").toString();
         } catch (Exception e) {
             ;
         }
 
-        System.out.println("wash-----------------with date------------------price is" +
-                           date);
+        System.out.println("washValue - name " + name);
+        System.out.println("washValue - (get)CreationDate " + date);
+        System.out.println("washValue - (get)BuyerId "      + p_buyer);
 
-        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,:3); end;";
-        java.sql.CallableStatement cs =
-            appM.getDBTransaction().createCallableStatement(stmt, 1);
+        String stmt = "BEGIN :1 := mnj_get_costing_finance_price(:2,to_date(:3,'YYYY-MM-DD'),:4); end;";
+        java.sql.CallableStatement cs = appM.getDBTransaction().createCallableStatement(stmt, 1);
         try {
             cs.registerOutParameter(1, OracleTypes.NUMBER);
             cs.setString(2, name);
             cs.setString(3, date);
+            cs.setString(4, p_buyer);
             cs.execute();
             value = cs.getDouble(1);
             cs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("value-----------------with value------------------price is" +
-                           value);
+        System.out.println("washValue - wash percent " + value);
+        System.out.println("-------------------------------------");
         return value;
     }
-
 
     public void setFOBValues(double trim, double fabric, double washTotalVal,
                              double service, double financialCostValue,
