@@ -22,6 +22,7 @@ import model.views.XX_OM_POC_H_TVOImpl;
 
 import oracle.adf.share.ADFContext;
 
+import oracle.jbo.AttributeDef;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
@@ -231,23 +232,67 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
     
     public void CopyItemsDetail(){
 
-    ViewObject hvo = getXX_OM_POC_D1_TVO1();
-    Row r = hvo.getCurrentRow();
-    String DetailId = r.getAttribute("DetailId").toString();
-    System.out.println("DetailId-------------->>"+DetailId);
-    String stmt = "BEGIN PRECOSTING_COMMON_PKG.Copy_Item_Detail(:1); end;";
-    double amount = 0.0;
-    CallableStatement cs =
-    getDBTransaction().createCallableStatement(stmt, 1);
-    try {
-    cs.setInt(1, Integer.parseInt(DetailId));
-    cs.execute();
-    cs.close();
-    } catch (Exception e) { ; }
-    hvo.executeQuery();
-    System.out.println("DetailId 123-------------->>"+DetailId);
+//    ViewObject hvo = getXX_OM_POC_D1_TVO1();
+//    Row r = hvo.getCurrentRow();
+//    String DetailId = r.getAttribute("DetailId").toString();
+//    System.out.println("DetailId-------------->>"+DetailId);
+//    String stmt = "BEGIN PRECOSTING_COMMON_PKG.Copy_Item_Detail(:1); end;";
+//    double amount = 0.0;
+//    CallableStatement cs =
+//    getDBTransaction().createCallableStatement(stmt, 1);
+//    try {
+//    cs.setInt(1, Integer.parseInt(DetailId));
+//    cs.execute();
+//    cs.close();
+//    } catch (Exception e) { ; }
+//    hvo.executeQuery();
+//    System.out.println("DetailId 123-------------->>"+DetailId);
+    
+        duplicateRowLine(getXX_OM_POC_D1_TVO1());
 
     }
+    
+    public void duplicateRowLine(ViewObject  vo) {
+        
+       // ViewObject vo = this.getViewObjectFromIterator("YOUR_ITERATOR_NAME");
+        Row currentRow = vo.getCurrentRow();
+        Row duplicatedRow = vo.createRow();
+        AttributeDef[] voKeyAttributes = vo.getKeyAttributeDefs(); //List of the primary keys that need to be unique
+        String[] currentRowAttributes = currentRow.getAttributeNames();
+        for (String attributeName : currentRowAttributes) {
+            int attributeIndex = duplicatedRow.getAttributeIndexOf(attributeName);
+            //Check if the attribute is updatable
+            if (duplicatedRow.isAttributeUpdateable(attributeIndex)){
+              //Check if the attribute is a Primary Key
+              if (!this.attributeIsPrimaryKey(voKeyAttributes, attributeName)) {
+                  //If it's not, copy the attribute value to the duplicated row
+                  duplicatedRow.setAttribute(attributeName, currentRow.getAttribute(attributeName));
+              }
+              //Mandatory: Add an else here to set the primary key with a unique value in java
+            }
+        }        
+        //Add the duplicated row to your View Object
+        vo.insertRow(duplicatedRow);
+        
+        System.out.println( "======================= currentRow.getAttribute(\"CostPerPcs\") "+ currentRow.getAttribute("CostPerPcs"));
+        
+        System.out.println( "=======================  duplicatedRow.getAttribute(\"CostPerPcs\") "+ duplicatedRow.getAttribute("CostPerPcs"));
+        
+        //Optionnal : Commit the VO to add row in database
+        //Optionnal : Refresh the table AdfFacesContext.getCurrentInstance().addPartialTarget("YOUR_TABLE_ID");
+    }
+
+    private boolean attributeIsPrimaryKey(AttributeDef[] voKeyAttributes, String currentAttributeName) {
+        for (AttributeDef voKeyAttribute : voKeyAttributes) {
+            if (voKeyAttribute.isPrimaryKey() && currentAttributeName.equals(voKeyAttribute.getName())) {
+                //If one of the primaryKey attribute is the current attribute
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     
     /* Poc Front page Copy Button */
 

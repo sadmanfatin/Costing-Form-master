@@ -3,3 +3,6 @@
 *.cdi_javac
 *.class
 *.jdb
+*.jdb
+*.cdi_javac
+*.class
