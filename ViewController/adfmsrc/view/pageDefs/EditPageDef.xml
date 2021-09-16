@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="EditPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XX_OM_POC_H_TVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="XX_OM_POC_H_TVO1Iterator"/>
+    <iterator Binds="XX_OM_POC_L_TVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="XX_OM_POC_L_TVO1Iterator"/>
+    <searchRegion Binds="XX_OM_POC_L_TVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XX_OM_POC_L_TVO1Query"/>
+    <iterator Binds="XX_OM_POC_D1_TVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XX_OM_POC_D1_TVO1Iterator"/>
+    <searchRegion Binds="XX_OM_POC_D1_TVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XX_OM_POC_D1_TVO1Query"/>
+    <iterator Binds="XX_OM_POC_D2_TVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XX_OM_POC_D2_TVO1Iterator"/>
+    <searchRegion Binds="XX_OM_POC_D2_TVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XX_OM_POC_D2_TVO1Query"/>
+    <iterator Binds="XX_OM_POC_D2_TVO2_1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XX_OM_POC_D2_TVO2_1Iterator"/>
+    <searchRegion Binds="XX_OM_POC_D2_TVO2_1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XX_OM_POC_D2_TVO2_1Query"/>
+    <iterator Binds="POCLinesCopyVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="POCLinesCopyVO1Iterator"/>
+    <searchRegion Binds="POCLinesCopyVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="POCLinesCopyVO1Query"/>
+    <iterator Binds="trimsVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="trimsVO1Iterator"/>
+    <searchRegion Binds="trimsVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="trimsVO1Query"/>
+    <iterator Binds="others_VO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="others_VO1Iterator"/>
+    <searchRegion Binds="others_VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="others_VO1Query"/>
+    <iterator Binds="ASAM_AStyleEffiVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ASAM_AStyleEffiVO1Iterator"/>
+    <iterator Binds="short_or_eccess_VO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="short_or_eccess_VO1Iterator"/>
+    <iterator Binds="MDSIRsVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="MDSIRsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="Style">
+      <AttrNames>
+        <Item Value="Style"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_Fit" id="Fit" DTSupportsMRU="true"/>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_EndUser" id="EndUser" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="OrderQty">
+      <AttrNames>
+        <Item Value="OrderQty"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_ItemDescription" id="ItemDescription" DTSupportsMRU="true"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_LcUnit" id="LcUnit" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator"
+                     id="StyleDescription">
+      <AttrNames>
+        <Item Value="StyleDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XX_OM_POC_L_TVO1Iterator" id="XX_OM_POC_L_TVO1">
+      <nodeDefinition DefName="model.views.XX_OM_POC_L_TVO"
+                      Name="XX_OM_POC_L_TVO10">
+        <AttrNames>
+          <Item Value="FobId"/>
+          <Item Value="PocId"/>
+          <Item Value="SystemId"/>
+          <Item Value="WashName"/>
+          <Item Value="Color"/>
+          <Item Value="FobWitoutComm"/>
+          <Item Value="FobWithComm"/>
+          <Item Value="FobWithSmsSample"/>
+          <Item Value="Cost"/>
+          <Item Value="Finance"/>
+          <Item Value="Profit"/>
+          <Item Value="ItemId"/>
+          <Item Value="CommisonPrcnt"/>
+          <Item Value="Fob"/>
+          <Item Value="FabricCost"/>
+          <Item Value="TrimCost"/>
+          <Item Value="WashCost"/>
+          <Item Value="CmMerchand"/>
+          <Item Value="Smv"/>
+          <Item Value="FactoryAvgEf"/>
+          <Item Value="ProdCostLinePerH"/>
+          <Item Value="CmManagement"/>
+          <Item Value="Remarks"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="FabricDesc"/>
+          <Item Value="Others"/>
+          <Item Value="Cm"/>
+          <Item Value="SmsQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XX_OM_POC_L_TVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="XX_OM_POC_L_TVO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="XX_OM_POC_D1_TVO1Iterator" id="XX_OM_POC_D1_TVO1">
+      <nodeDefinition DefName="model.views.XX_OM_POC_D1_TVO"
+                      Name="XX_OM_POC_D1_TVO10">
+        <AttrNames>
+          <Item Value="FobId"/>
+          <Item Value="ItemPrefix"/>
+          <Item Value="RefCode"/>
+          <Item Value="ItemDesc"/>
+          <Item Value="Uom"/>
+          <Item Value="PaymentTermId"/>
+          <Item Value="DeliveryTermId"/>
+          <Item Value="ActualUnitPrice"/>
+          <Item Value="AddChargeLc"/>
+          <Item Value="AddPriceFob"/>
+          <Item Value="AddPriceMoq"/>
+          <Item Value="FinalUnitPrice"/>
+          <Item Value="ConsPerPcs"/>
+          <Item Value="Status"/>
+          <Item Value="Bufer"/>
+          <Item Value="AddDeductCost"/>
+          <Item Value="WastageInQty"/>
+          <Item Value="ConsWithWastage"/>
+          <Item Value="FinalCons"/>
+          <Item Value="FabFinanceCost"/>
+          <Item Value="PriceUom"/>
+          <Item Value="AddCrgPrcnt"/>
+          <Item Value="WastageInPer"/>
+          <Item Value="CostPerPcs"/>
+          <Item Value="FinalCostPerPcs"/>
+          <Item Value="Remarks"/>
+          <Item Value="UomConv"/>
+          <Item Value="PrefixDesc"/>
+          <Item Value="ItemPrefixDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XX_OM_POC_D1_TVO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="XX_OM_POC_D1_TVO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_ItemPurchaseType" id="ItemPurchaseType"
+          DTSupportsMRU="true"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="FabricFinance">
+      <AttrNames>
+        <Item Value="FabricFinance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="TrimFinance">
+      <AttrNames>
+        <Item Value="TrimFinance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="WashFinance">
+      <AttrNames>
+        <Item Value="WashFinance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="CmMerchand">
+      <AttrNames>
+        <Item Value="CmMerchand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator"
+                     id="ProdCostLinePerH">
+      <AttrNames>
+        <Item Value="ProdCostLinePerH"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="FactoryAvgEf">
+      <AttrNames>
+        <Item Value="FactoryAvgEf"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Smv">
+      <AttrNames>
+        <Item Value="Smv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Cost">
+      <AttrNames>
+        <Item Value="Cost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Finance">
+      <AttrNames>
+        <Item Value="Finance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Profit">
+      <AttrNames>
+        <Item Value="Profit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Cm">
+      <AttrNames>
+        <Item Value="Cm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="CmManagement">
+      <AttrNames>
+        <Item Value="CmManagement"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="FobWithComm">
+      <AttrNames>
+        <Item Value="FobWithComm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator"
+                     id="StyleEfficiency">
+      <AttrNames>
+        <Item Value="StyleEfficiency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Sam">
+      <AttrNames>
+        <Item Value="Sam"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="TotalCost">
+      <AttrNames>
+        <Item Value="TotalCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="CostNew">
+      <AttrNames>
+        <Item Value="CostNew"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="CommisonPrcnt">
+      <AttrNames>
+        <Item Value="CommisonPrcnt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="OtherCharge">
+      <AttrNames>
+        <Item Value="OtherCharge"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XX_OM_POC_D2_TVO1Iterator" id="XX_OM_POC_D2_TVO1">
+      <nodeDefinition DefName="model.views.XX_OM_POC_D2_TVO"
+                      Name="XX_OM_POC_D2_TVO10">
+        <AttrNames>
+          <Item Value="ProcessName"/>
+          <Item Value="CostAmount"/>
+          <Item Value="Profit"/>
+          <Item Value="Total"/>
+          <Item Value="DetailId"/>
+          <Item Value="ManualPrice"/>
+          <Item Value="ProcessId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XX_OM_POC_D2_TVO1Iterator" id="Delete2"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="XX_OM_POC_D2_TVO2_1Iterator" id="XX_OM_POC_D2_TVO2_1">
+      <nodeDefinition DefName="model.views.XX_OM_POC_D2_TVO2"
+                      Name="XX_OM_POC_D2_TVO2_10">
+        <AttrNames>
+          <Item Value="ProcessName"/>
+          <Item Value="CostAmount"/>
+          <Item Value="Profit"/>
+          <Item Value="ManualPrice"/>
+          <Item Value="Total"/>
+          <Item Value="CostUom"/>
+          <Item Value="ProcessId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XX_OM_POC_D2_TVO2_1Iterator" id="Delete3"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="GmApproval">
+      <AttrNames>
+        <Item Value="GmApproval"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="GmStatus">
+      <AttrNames>
+        <Item Value="GmStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="VersionNo">
+      <AttrNames>
+        <Item Value="VersionNo"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="StyleTracking"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="StyleTracking"
+                  IsViewObjectMethod="false"/>
+    <methodAction id="validateLines"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="validateLines"
+                  IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator"
+                     id="CmMerchandiserD">
+      <AttrNames>
+        <Item Value="CmMerchandiserD"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getProdCostUnitWise"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getProdCostUnitWise"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleDataControl.methodResults.getProdCostUnitWise_AppModuleDataControl_dataProvider_getProdCostUnitWise_result">
+      <NamedData NDName="unitName" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="XX_OM_POC_H_TVO1Iterator" id="PocId">
+      <AttrNames>
+        <Item Value="PocId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="ItemTotal">
+      <AttrNames>
+        <Item Value="ItemTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="copyRecords"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="copyRecords"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleDataControl.methodResults.copyRecords_AppModuleDataControl_dataProvider_copyRecords_result">
+      <NamedData NDName="type" NDType="java.lang.String"/>
+      <NamedData NDName="PocId" NDType="java.lang.String"/>
+      <NamedData NDName="FobId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="CopyItemsDetail"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="CopyItemsDetail"
+                  IsViewObjectMethod="false"/>
+    <tree IterBinding="POCLinesCopyVO1Iterator" id="POCLinesCopyVO1">
+      <nodeDefinition DefName="model.views.POCLinesCopyVO"
+                      Name="POCLinesCopyVO10">
+        <AttrNames>
+          <Item Value="PocId"/>
+          <Item Value="SubcostingNo"/>
+          <Item Value="Style"/>
+          <Item Value="FabricDesc"/>
+          <Item Value="WashName"/>
+          <Item Value="Color"/>
+          <Item Value="FabricCost"/>
+          <Item Value="TrimCost"/>
+          <Item Value="WashCost"/>
+          <Item Value="Others"/>
+          <Item Value="Cm"/>
+          <Item Value="FobWithComm"/>
+          <Item Value="MultiSelect" Binds="MultiSelect"/>
+          <Item Value="FobId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="POCLinesCopyVO1Iterator" id="MultiSelect"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="MultiSelect"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <methodAction id="createItems"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createItems"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleDataControl.methodResults.createItems_AppModuleDataControl_dataProvider_createItems_result">
+      <NamedData NDName="PocId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="Fob">
+      <AttrNames>
+        <Item Value="Fob"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="XX_OM_POC_H_TVO1Iterator"
+                  Uses="LOV_Status" id="Status"/>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="true"/>
+    <methodAction id="Approve" InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="Approve"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="PocId" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_Season" id="Season" DTSupportsMRU="true"/>
+    <list IterBinding="XX_OM_POC_H_TVO1Iterator" StaticList="false"
+          Uses="LOV_Brand" id="Brand" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="ShipmentValue">
+      <AttrNames>
+        <Item Value="ShipmentValue"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="XX_OM_POC_H_TVO1Iterator"
+                  Uses="LOV_Buyer" id="Buyer"/>
+    <tree IterBinding="trimsVO1Iterator" id="trimsVO1">
+      <nodeDefinition DefName="model.views.trimsVO" Name="trimsVO10">
+        <AttrNames>
+          <Item Value="ActualUnitPrice"/>
+          <Item Value="AddChargeLc"/>
+          <Item Value="AddCrgPrcnt"/>
+          <Item Value="AddDeductCost"/>
+          <Item Value="AddPriceFob"/>
+          <Item Value="AddPriceMoq"/>
+          <Item Value="Bufer"/>
+          <Item Value="ConsPerPcs"/>
+          <Item Value="ConsWithWastage"/>
+          <Item Value="CostPerPcs"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DeliveryTermId"/>
+          <Item Value="DetailId"/>
+          <Item Value="FabFinanceCost"/>
+          <Item Value="FinalCons"/>
+          <Item Value="FinalCostPerPcs"/>
+          <Item Value="FinalUnitPrice"/>
+          <Item Value="FobId"/>
+          <Item Value="ItemDesc"/>
+          <Item Value="ItemPrefix"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="PaymentTermId"/>
+          <Item Value="PrefixDesc"/>
+          <Item Value="PriceUom"/>
+          <Item Value="RefCode"/>
+          <Item Value="Remarks"/>
+          <Item Value="Status"/>
+          <Item Value="Uom"/>
+          <Item Value="UomConv"/>
+          <Item Value="WastageInPer"/>
+          <Item Value="WastageInQty"/>
+          <Item Value="ItemPrefixDesc"/>
+         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="trims_total">
+      <AttrNames>
+        <Item Value="trims_total"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="trimsVO1Iterator" id="CreateInsert4"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="trimsVO1Iterator" id="Delete4"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="others_VO1Iterator" id="others_VO1">
+      <nodeDefinition DefName="model.views.others_VO" Name="others_VO10">
+        <AttrNames>
+          <Item Value="ActualUnitPrice"/>
+          <Item Value="Bufer"/>
+          <Item Value="ConsPerPcs"/>
+          <Item Value="ConsWithWastage"/>
+          <Item Value="CostPerPcs"/>
+          <Item Value="FabFinanceCost"/>
+          <Item Value="FinalCons"/>
+          <Item Value="FinalCostPerPcs"/>
+          <Item Value="FinalUnitPrice"/>
+          <Item Value="FobId"/>
+          <Item Value="ItemDesc"/>
+          <Item Value="ItemPrefix"/>
+          <Item Value="PrefixDesc"/>
+          <Item Value="RefCode"/>
+          <Item Value="ItemPrefixDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="fab_total">
+      <AttrNames>
+        <Item Value="fab_total"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="others_total">
+      <AttrNames>
+        <Item Value="others_total"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="others_VO1Iterator" id="CreateInsert5"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="others_VO1Iterator" id="Delete5"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="D2_TVO_total">
+      <AttrNames>
+        <Item Value="D2_TVO_total"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator" id="D2_TVO1_Total">
+      <AttrNames>
+        <Item Value="D2_TVO1_Total"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ASAM_AStyleEffiVO1Iterator"
+                     id="ActualStyleEfficiency">
+      <AttrNames>
+        <Item Value="ActualStyleEfficiency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ASAM_AStyleEffiVO1Iterator" id="ActualSam">
+      <AttrNames>
+        <Item Value="ActualSam"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="short_or_eccess_VO1Iterator" id="Postion">
+      <AttrNames>
+        <Item Value="Postion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="short_or_eccess_VO1Iterator" id="ShipmentPct">
+      <AttrNames>
+        <Item Value="ShipmentPct"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XX_OM_POC_L_TVO1Iterator"
+                     id="ProdPerLinePerH">
+      <AttrNames>
+        <Item Value="ProdPerLinePerH"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="FactoryAvgEfTobe">
+      <AttrNames>
+        <Item Value="FactoryAvgEfTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="CpmSamTobe">
+      <AttrNames>
+        <Item Value="CpmSamTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="FinanceTobe">
+      <AttrNames>
+        <Item Value="FinanceTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="CostSamTobe">
+      <AttrNames>
+        <Item Value="CostSamTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="TotalCostTobe">
+      <AttrNames>
+        <Item Value="TotalCostTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MDSIRsVO1Iterator" id="ProfitTobe">
+      <AttrNames>
+        <Item Value="ProfitTobe"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="XX_OM_POC_L_TVO1Iterator" StaticList="false"
+          Uses="LOV_Shipment" id="Shipment" DTSupportsMRU="false"/>
+  </bindings>
+</pageDefinition>

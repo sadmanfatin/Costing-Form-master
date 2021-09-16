@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="SearchPGPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XX_OM_POC_H_TVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="XX_OM_POC_H_TVO1Iterator"/>
+    <searchRegion Binds="XX_OM_POC_H_TVO1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XX_OM_POC_H_TVO1Query"/>
+    <invokeAction id="setSesValues" Binds="setSessionValues" Refresh="always"/>
+    <iterator Binds="SearchVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="SearchVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="XX_OM_POC_H_TVO1Iterator" id="XX_OM_POC_H_TVO1">
+      <nodeDefinition DefName="model.views.XX_OM_POC_H_TVO"
+                      Name="XX_OM_POC_H_TVO10">
+        <AttrNames>
+          <Item Value="PocId"/>
+          <Item Value="VersionNo"/>
+          <Item Value="BuyerId"/>
+          <Item Value="Season"/>
+          <Item Value="Brand"/>
+          <Item Value="Style"/>
+          <Item Value="StyleDescription"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="EndUser"/>
+          <Item Value="GmApproval"/>
+          <Item Value="OrderQty"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="Buyer"/>
+          <Item Value="CreatedByName"/>
+          <Item Value="GmStatus"/>
+          <Item Value="OrgName"/>
+          <Item Value="Status"/>
+          <Item Value="OrderQtyAll"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XX_OM_POC_H_TVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <methodAction id="CopyPrecost"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="CopyPrecost"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="type" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respApplId" NDValue="#{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="SearchVO1Iterator" StaticList="false" Uses="LOV_Org"
+          id="Org" DTSupportsMRU="true"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_Buyer" id="Buyer"/>
+    <list IterBinding="SearchVO1Iterator" StaticList="false" Uses="LOV_Season"
+          id="Season" DTSupportsMRU="true"/>
+    <action IterBinding="XX_OM_POC_H_TVO1Iterator"
+            id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

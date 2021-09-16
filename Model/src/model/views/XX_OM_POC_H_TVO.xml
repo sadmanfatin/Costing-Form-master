@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XX_OM_POC_H_TVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.views.XX_OM_POC_H_TVORowImpl"
+  ComponentClass="model.views.XX_OM_POC_H_TVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="p_userId"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[adf.context.sessionScope.userIdS]]></TransientExpression>
+  </Variable>
+  <ViewAccessor
+    Name="Buyerlov1"
+    ViewObjectName="model.lov.Buyerlov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Seasonlov1"
+    ViewObjectName="model.lov.Seasonlov">
+    <ViewCriteriaUsage
+      Name="SeasonlovCriteria"
+      FullName="model.lov.Seasonlov.SeasonlovCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_customer">
+        <TransientExpression><![CDATA[Buyer]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="branchlove1"
+    ViewObjectName="model.lov.branchlove">
+    <ViewCriteriaUsage
+      Name="branchloveCriteria"
+      FullName="model.lov.branchlove.branchloveCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_customer">
+        <TransientExpression><![CDATA[Buyer]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="ItemPurchaseTypeLov1"
+    ViewObjectName="model.lov.ItemPurchaseTypeLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="FitLov1"
+    ViewObjectName="model.lov.FitLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EndUserLov1"
+    ViewObjectName="model.lov.EndUserLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ItemDecLov1"
+    ViewObjectName="model.lov.ItemDecLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LcUnitLov1"
+    ViewObjectName="model.lov.LcUnitLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="flux_StatusLov1"
+    ViewObjectName="model.lov.flux_StatusLov"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="chgseasonlov1"
+    ViewObjectName="model.lov.chgseasonlov">
+    <ParameterMap>
+      <PIMap Variable="p_buyer_id">
+        <TransientExpression><![CDATA[BuyerId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="chgbrandlov1"
+    ViewObjectName="model.lov.chgbrandlov">
+    <ParameterMap>
+      <PIMap Variable="p_buyer_id">
+        <TransientExpression><![CDATA[BuyerId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="BuyerUMLov1"
+    ViewObjectName="model.lov.BuyerUMLov"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ItemPurchaseType"
+    ListVOName="ItemPurchaseTypeLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ItemPurchaseType_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ItemPurchaseType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ItemPurchaseType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ItemPurchaseType"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Fit"
+    ListVOName="FitLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_Fit_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Fit"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EndUser"
+    ListVOName="EndUserLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_EndUser_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EndUser"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ItemDescription"
+    ListVOName="ItemDecLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ItemDescription_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ItemDescription"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LcUnit"
+    ListVOName="LcUnitLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_LcUnit_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LcUnit"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrganizationId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="InternalAddressLine"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="flux_StatusLov1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Status_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Season"
+    ListVOName="chgseasonlov1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Season"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Season"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Brand"
+    ListVOName="chgbrandlov1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Brand"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Brand"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Buyer"
+    ListVOName="BuyerUMLov1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Buyer"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BuyerId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustomerName"/>
+      <Item Value="CustomerId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustomerName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT XX_OM_POC_H_TEO.POC_ID, 
+      xx.customer_name Buyer_name,
+      xx.SEASON Season_name ,xx.STYLE Style_Name ,xx.BRAND Brand_Name,xx.FIT Fit_Name,xx.ORDER_QTY Order_Qantity,
+       XX_OM_POC_H_TEO.LC_UNIT, 
+       XX_OM_POC_H_TEO.BUYER_ID, 
+       XX_OM_POC_H_TEO.SEASON, 
+       XX_OM_POC_H_TEO.STYLE, 
+       XX_OM_POC_H_TEO.STYLE_DESCRIPTION, 
+       XX_OM_POC_H_TEO.BRAND, 
+       XX_OM_POC_H_TEO.FIT, 
+       XX_OM_POC_H_TEO.END_USER, 
+       XX_OM_POC_H_TEO.ITEM_DESCRIPTION, 
+       XX_OM_POC_H_TEO.ORDER_QTY, 
+       XX_OM_POC_H_TEO.CREATED_BY, 
+       XX_OM_POC_H_TEO.CREATION_DATE, 
+       XX_OM_POC_H_TEO.LAST_UPDATED_BY, 
+       XX_OM_POC_H_TEO.LAST_UPDATED_DATE, 
+       XX_OM_POC_H_TEO.GM_APPROVAL, 
+       XX_OM_POC_H_TEO.VERSION_NO, 
+       XX_OM_POC_H_TEO.VERSION_DATE, 
+       XX_OM_POC_H_TEO.RESP_ID, 
+       XX_OM_POC_H_TEO.TRACKING_BASIS, 
+       XX_OM_POC_H_TEO.ITEM_PURCHASE_TYPE, 
+       XX_OM_POC_H_TEO.STATUS,
+       XX_OM_POC_H_TEO.FABRIC_FINANCE,
+       XX_OM_POC_H_TEO.TRIM_FINANCE,
+       XX_OM_POC_H_TEO.WASH_FINANCE, 
+       XX_OM_POC_H_TEO.ALTERNET_SEASON, 
+       XX_OM_POC_H_TEO.DEPT,
+       XX_OM_POC_H_TEO.CM_MERCHANDISER_D,
+(select customer_name
+from ar_customers ac
+where ac.CUSTOMER_ID = XX_OM_POC_H_TEO.Buyer_Id) Buyer,
+(SELECT FU.USER_NAME FROM FND_USER FU WHERE FU.USER_ID = XX_OM_POC_H_TEO.CREATED_BY) CREATED_BY_NAME,
+       decode(XX_OM_POC_H_TEO.Gm_Approval,
+              'I',
+              'Inprocess',
+              'Y',
+              'Approved',
+              'Incomplete') gm_status,
+(SELECT INTERNAL_ADDRESS_LINE FROM HR_ORGANIZATION_UNITS WHERE ORGANIZATION_ID = XX_OM_POC_H_TEO.LC_UNIT) ORG_NAME,
+(SELECT SUM (QTY)
+FROM xx_om_poc_l_t l, xx_om_bpo_info_t b
+WHERE l.fob_id = b.fob_id AND l.poc_id = XX_OM_POC_H_TEO.POC_ID)ORDER_QTY_ALL
+FROM XX_OM_POC_H_T XX_OM_POC_H_TEO,(select H.POC_ID, AC.customer_name,H.SEASON,H.STYLE,H.BRAND,H.FIT,H.ORDER_QTY
+from ar_customers ac,XX_OM_POC_H_T H WHERE AC.CUSTOMER_ID=h.buyer_id )xx  where XX_OM_POC_H_TEO.DEPT=1 and xx.poc_id=XX_OM_POC_H_TEO.POC_ID AND XX_OM_POC_H_TEO.Buyer_Id in
+(select V.BUYER_ID
+from --MNJ_USER_WISE_BUYERS_DET_V
+ XX_OM_BUYERWISE_USER_RES_T v
+where V.USER_ID = :p_userId)
+order by TO_NUMBER( XX_OM_POC_H_TEO.POC_ID) desc ,TO_NUMBER(XX_OM_POC_H_TEO.Version_No) desc]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="XX_OM_POC_H_TEO"
+    Entity="model.entity.XX_OM_POC_H_TEO"/>
+  <ViewAttribute
+    Name="PocId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PocId"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="POC_ID"/>
+  <ViewAttribute
+    Name="BuyerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUYER_NAME"
+    Expression="BUYER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SeasonName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SEASON_NAME"
+    Expression="SEASON_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StyleName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STYLE_NAME"
+    Expression="STYLE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BrandName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BRAND_NAME"
+    Expression="BRAND_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FitName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FIT_NAME"
+    Expression="FIT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderQantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORDER_QANTITY"
+    Expression="ORDER_QANTITY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LcUnit"
+    PrecisionRule="true"
+    EntityAttrName="LcUnit"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="LC_UNIT"
+    LOVName="LOV_LcUnit">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuyerId"
+    PrecisionRule="true"
+    EntityAttrName="BuyerId"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="BUYER_ID"/>
+  <ViewAttribute
+    Name="Season"
+    PrecisionRule="true"
+    EntityAttrName="Season"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="SEASON"
+    LOVName="LOV_Season">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Style"
+    PrecisionRule="true"
+    EntityAttrName="Style"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="STYLE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StyleDescription"
+    PrecisionRule="true"
+    EntityAttrName="StyleDescription"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="STYLE_DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Brand"
+    PrecisionRule="true"
+    EntityAttrName="Brand"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="BRAND"
+    LOVName="LOV_Brand">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fit"
+    PrecisionRule="true"
+    EntityAttrName="Fit"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="FIT"
+    LOVName="LOV_Fit">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndUser"
+    PrecisionRule="true"
+    EntityAttrName="EndUser"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="END_USER"
+    LOVName="LOV_EndUser">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemDescription"
+    PrecisionRule="true"
+    EntityAttrName="ItemDescription"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="ITEM_DESCRIPTION"
+    LOVName="LOV_ItemDescription">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderQty"
+    PrecisionRule="true"
+    EntityAttrName="OrderQty"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="ORDER_QTY">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="GmApproval"
+    PrecisionRule="true"
+    EntityAttrName="GmApproval"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="GM_APPROVAL"/>
+  <ViewAttribute
+    Name="VersionNo"
+    PrecisionRule="true"
+    EntityAttrName="VersionNo"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="VERSION_NO"
+    DefaultValue="1"/>
+  <ViewAttribute
+    Name="VersionDate"
+    PrecisionRule="true"
+    EntityAttrName="VersionDate"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="VERSION_DATE"/>
+  <ViewAttribute
+    Name="RespId"
+    PrecisionRule="true"
+    EntityAttrName="RespId"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="RESP_ID"/>
+  <ViewAttribute
+    Name="TrackingBasis"
+    PrecisionRule="true"
+    EntityAttrName="TrackingBasis"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="TRACKING_BASIS"/>
+  <ViewAttribute
+    Name="ItemPurchaseType"
+    PrecisionRule="true"
+    EntityAttrName="ItemPurchaseType"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="ITEM_PURCHASE_TYPE"
+    LOVName="LOV_ItemPurchaseType">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FabricFinance"
+    PrecisionRule="true"
+    EntityAttrName="FabricFinance"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="FABRIC_FINANCE"/>
+  <ViewAttribute
+    Name="TrimFinance"
+    PrecisionRule="true"
+    EntityAttrName="TrimFinance"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="TRIM_FINANCE"/>
+  <ViewAttribute
+    Name="WashFinance"
+    PrecisionRule="true"
+    EntityAttrName="WashFinance"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="WASH_FINANCE"/>
+  <ViewAttribute
+    Name="AlternetSeason"
+    PrecisionRule="true"
+    EntityAttrName="AlternetSeason"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="ALTERNET_SEASON"/>
+  <ViewAttribute
+    Name="Dept"
+    PrecisionRule="true"
+    EntityAttrName="Dept"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="DEPT"/>
+  <ViewAttribute
+    Name="CmMerchandiserD"
+    PrecisionRule="true"
+    EntityAttrName="CmMerchandiserD"
+    EntityUsage="XX_OM_POC_H_TEO"
+    AliasName="CM_MERCHANDISER_D"/>
+  <ViewAttribute
+    Name="Buyer"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUYER"
+    Expression="BUYER"
+    SQLType="VARCHAR"
+    LOVName="LOV_Buyer">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedByName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATED_BY_NAME"
+    Expression="CREATED_BY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GmStatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GM_STATUS"
+    Expression="GM_STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORG_NAME"
+    Expression="ORG_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderQtyAll"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORDER_QTY_ALL"
+    Expression="ORDER_QTY_ALL"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchByDocNo"
+    ViewObjectName="model.views.XX_OM_POC_H_TVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow1"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PocId"
+        ViewAttribute="PocId"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Season"
+        ViewAttribute="Season"
+        Operator="="
+        Conjunction="OR"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Style"
+        ViewAttribute="Style"
+        Operator="="
+        Conjunction="OR"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Buyer"
+        ViewAttribute="Buyer"
+        Operator="="
+        Conjunction="OR"
+        UpperColumns="1"
+        Required="Optional"
+        GenerateIsNullClauseForBindVars="false"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="XX_OM_POC_L_TVO"
+    ViewLink="model.views.XxOmPocLFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

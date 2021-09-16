@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="XX_OM_POC_D2_TEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="XX_OM_POC_D2_T"
+  AliasName="XX_OM_POC_D2_TEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.entity.XX_OM_POC_D2_TEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DetailId"
+    ColumnName="DETAIL_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FobId"
+    ColumnName="FOB_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProcessId"
+    ColumnName="PROCESS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProcessName"
+    Precision="1000"
+    ColumnName="PROCESS_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CostAmount"
+    ColumnName="COST_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Profit"
+    ColumnName="PROFIT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ManualPrice"
+    ColumnName="MANUAL_PRICE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Total"
+    ColumnName="TOTAL"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CostUom"
+    Precision="10"
+    ColumnName="COST_UOM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedDate"
+    ColumnName="LAST_UPDATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="XX_OM_POC_D2_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="XX_OM_POC_L_TEO"
+    Association="model.entity.line_fobviad2_fobassoc"
+    AssociationEnd="model.entity.line_fobviad2_fobassoc.XX_OM_POC_L_TEO"
+    AssociationOtherEnd="model.entity.line_fobviad2_fobassoc.XX_OM_POC_D2_TEO"
+    Type="model.entity.XX_OM_POC_L_TEOImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="XxOmPocD2TPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XX_OM_POC_D2_T_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.XX_OM_POC_D2_TEO.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxOmPocD2TUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XX_OM_POC_D2_T_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.XX_OM_POC_D2_TEO.DetailId"/>
+      <Item Value="model.entity.XX_OM_POC_D2_TEO.ProcessId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxOmPocD2TFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XX_OM_POC_D1_T_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="XX_OM_POC_D2_T_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.XX_OM_POC_D2_TEO.FobId"/>
+    </AttrArray>
+  </Key>
+</Entity>

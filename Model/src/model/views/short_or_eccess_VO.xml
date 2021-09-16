@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="short_or_eccess_VO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.views.short_or_eccess_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[select
+(CASE
+when SHORT_SHIPMENT>0 then 'Short'
+when EXCESS_SHIPMENT>0 then 'Excess'
+END) postion,
+poc_id,
+system_id,
+SHIPMENT_PCT from(SELECT aa.*,
+CASE
+WHEN aa.ord_qty = 0 THEN 0
+ELSE ROUND ( (ABS (NVL (difference, 0)) / aa.ord_qty) * 100, 2)
+END
+Shipment_pct
+FROM (SELECT ovs.*,(SELECT customer_name
+FROM ar_customers ac
+WHERE ac.customer_id =ovs.buyer_id)
+buyer,
+(NVL (ovs.ord_qty, 0) - NVL (ovs.sales_qty, 0)) difference,
+CASE
+WHEN (NVL (ovs.ord_qty, 0) - NVL (ovs.sales_qty, 0)) > 0
+THEN
+(NVL (ovs.ord_qty, 0) - NVL (ovs.sales_qty, 0))
+END
+short_shipment,
+CASE
+WHEN (NVL (ovs.ord_qty, 0) - NVL (ovs.sales_qty, 0)) < 0
+THEN
+ABS (NVL (ovs.ord_qty, 0) - NVL (ovs.sales_qty, 0))
+END
+Excess_shipment
+
+FROM MNJ_ORDER_VS_SALES ovs) aa
+where 1=1 )]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Postion"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="POSTION"
+    Expression="POSTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PocId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="POC_ID"
+    Expression="POC_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SystemId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="SYSTEM_ID"
+    Expression="SYSTEM_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ShipmentPct"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="SHIPMENT_PCT"
+    Expression="SHIPMENT_PCT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

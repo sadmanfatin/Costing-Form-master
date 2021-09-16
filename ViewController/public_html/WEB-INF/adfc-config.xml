@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="SearchPG">
+    <page>/SearchPG.jspx</page>
+    <input-page-parameter>
+      <from-value>#{param.ParamOrgId}</from-value>
+      <to-value>#{viewScope.OrgId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamUserId}</from-value>
+      <to-value>#{viewScope.UserId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamRespId}</from-value>
+      <to-value>#{viewScope.RespId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamRespApplId}</from-value>
+      <to-value>#{viewScope.RespApplId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.POC}</from-value>
+      <to-value>#{viewScope.POCNO}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="Edit">
+    <page>/Edit.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id id="__2">SearchPG</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome id="__5">*gotoEdit</from-outcome>
+      <to-activity-id id="__4">Edit</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id id="__7">Edit</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome id="__10">*GotoSearch</from-outcome>
+      <to-activity-id id="__8">SearchPG</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__14">
+    <managed-bean-name id="__11">ManagedBean</managed-bean-name>
+    <managed-bean-class id="__13">view.backing.bean.ManagedBean</managed-bean-class>
+    <managed-bean-scope id="__12">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__17">
+    <managed-bean-name id="__16">Exclereport</managed-bean-name>
+    <managed-bean-class id="__15">Exclereport</managed-bean-class>
+    <managed-bean-scope id="__18">request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

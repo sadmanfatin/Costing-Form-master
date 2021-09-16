@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="pocLtoShort_eccess_vL"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.views.pocLtoShort_eccess_vL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="XX_OM_POC_L_TVO"
+    Cardinality="1"
+    Owner="model.views.XX_OM_POC_L_TVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="XX_OM_POC_L_TVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.views.XX_OM_POC_L_TVO.PocId"/>
+      <Item Value="model.views.XX_OM_POC_L_TVO.SystemId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="short_or_eccess_VO"
+    Cardinality="-1"
+    Owner="model.views.short_or_eccess_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="short_or_eccess_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.views.short_or_eccess_VO.PocId"/>
+      <Item Value="model.views.short_or_eccess_VO.SystemId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

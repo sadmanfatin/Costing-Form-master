@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelHeader text="Costing Form" id="ph1"
+                        styleClass="AFStretchWidth">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:panelFormLayout id="pfl1" styleClass="AFStretchWidth"
+                              inlineStyle="width:1467px; height:47px;" rows="1"
+                              maxColumns="10">
+            <af:selectOneChoice value="#{bindings.Org.inputValue}"
+                                label="L.C Unit "
+                                required="#{bindings.Org.hints.mandatory}"
+                                shortDesc="#{bindings.Org.hints.tooltip}"
+                                id="soc1" autoSubmit="true" visible="false">
+              <f:selectItems value="#{bindings.Org.items}" id="si1"/>
+            </af:selectOneChoice>
+            <af:inputListOfValues id="buyerId"
+                                  popupTitle="Search and Select: #{bindings.Buyer.hints.label}"
+                                  value="#{bindings.Buyer.inputValue}"
+                                  label="Buyer "
+                                  model="#{bindings.Buyer.listOfValuesModel}"
+                                  required="#{bindings.Buyer.hints.mandatory}"
+                                  columns="#{bindings.Buyer.hints.displayWidth}"
+                                  shortDesc="#{bindings.Buyer.hints.tooltip}"
+                                  autoSubmit="true">
+              <f:validator binding="#{bindings.Buyer.validator}"/>
+              <af:autoSuggestBehavior suggestedItems="#{bindings.Buyer.suggestedItems}"/>
+            </af:inputListOfValues>
+            <af:selectOneChoice value="#{bindings.Season.inputValue}"
+                                label="Season"
+                                required="#{bindings.Season.hints.mandatory}"
+                                shortDesc="#{bindings.Season.hints.tooltip}"
+                                id="soc2" partialTriggers="buyerId"
+                                autoSubmit="true">
+              <f:selectItems value="#{bindings.Season.items}" id="si2"/>
+            </af:selectOneChoice>
+            <af:commandButton text="Search" id="cb7" inlineStyle="height:20px"
+                              partialSubmit="true"
+                              action="#{ManagedBean.Search}"/>
+          </af:panelFormLayout>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                              inlineStyle="height:720px;">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                  text="Create"
+                                  id="cb1" action="*gotoEdit"
+                                  inlineStyle="height:30px;" immediate="true"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Open" id="cb2"
+                                  inlineStyle="height:30px;"
+                                  action="*gotoEdit" partialSubmit="true"
+                                  immediate="true"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save"
+                                  disabled="#{!bindings.Commit.enabled}"
+                                  id="cb3" inlineStyle="height:30px;"/>
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Undo"
+                                  disabled="#{!bindings.Rollback.enabled}"
+                                  immediate="true" id="cb4"
+                                  inlineStyle="height:30px;">
+                  <af:resetActionListener/>
+                </af:commandButton>
+                <af:commandButton text="Copy" id="cb5"
+                                  inlineStyle="height:30px;">
+                  <af:showPopupBehavior popupId="::p1"/>
+                </af:commandButton>
+                <af:commandButton text="VERSION" id="cb6"
+                                  inlineStyle="height:30px;">
+                  <af:showPopupBehavior popupId="::p2"/>
+                </af:commandButton>
+                <af:commandButton text="export" id="cb8"
+                                  inlineStyle="height:30px;" visible="true">
+                  <af:fileDownloadActionListener method="#{Exclereport.Report}"
+                                                 filename="Costing Report.xls"
+                                                 contentType="application/excel"/>
+                </af:commandButton>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.XX_OM_POC_H_TVO1.collectionModel}"
+                      var="row" rows="#{bindings.XX_OM_POC_H_TVO1.rangeSize}"
+                      emptyText="#{bindings.XX_OM_POC_H_TVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.XX_OM_POC_H_TVO1.rangeSize}"
+                      rowBandingInterval="1"
+                      filterModel="#{bindings.XX_OM_POC_H_TVO1Query.queryDescriptor}"
+                      queryListener="#{bindings.XX_OM_POC_H_TVO1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.XX_OM_POC_H_TVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.XX_OM_POC_H_TVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1"
+                      partialTriggers="::cb1 cl1"
+                      inlineStyle="font-size:medium; color:Black; font-weight:normal;"
+                      binding="#{ManagedBean.queryTable}"
+                      styleClass="AFStretchWidth">
+              <af:column id="c13" align="center"
+                         sortable="true" filterable="true"
+                         headerText="Doc Ref. No">
+                <af:column sortProperty="PocId"
+                           sortable="true"
+                           headerText="Poc Id"
+                           id="c8" width="60" align="center" filterable="true">
+                  <af:outputText value="#{row.PocId}" id="ot8" visible="false">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.XX_OM_POC_H_TVO1.hints.PocId.format}"/>
+                  </af:outputText>
+                  <af:commandLink actionListener="#{bindings.setCurrentRowWithKeyValue.execute}"
+                                  text="#{row.PocId}"
+                                  disabled="#{!bindings.setCurrentRowWithKeyValue.enabled}"
+                                  id="cl1" action="*gotoEdit"/>
+                </af:column>
+                <af:column sortProperty="VersionNo"
+                           sortable="true"
+                           headerText="Version No"
+                           id="c6" width="40" filterable="true" align="center">
+                  <af:outputText value="#{row.VersionNo}" id="ot3">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.XX_OM_POC_H_TVO1.hints.VersionNo.format}"/>
+                  </af:outputText>
+                </af:column>
+              </af:column>
+              <af:column id="c1" align="center" sortable="true"
+                         filterable="true" headerText="Org Name" width="135"
+                         sortProperty="OrgName"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.OrgName}" id="ot5"/>
+              </af:column>
+              <af:column id="c14" headerText="Buyer" align="center"
+                         sortable="true" filterable="true" sortProperty="Buyer"
+                         width="130" filterFeatures="caseInsensitive">
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:outputText value="#{row.Buyer}" id="ot13"/>
+              </af:column>
+              <af:column sortProperty="Season" filterable="true" sortable="true"
+                         headerText="Season"
+                         id="c7" align="center"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.Season}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="Style" filterable="true" sortable="true"
+                         headerText="Style" id="c2" align="center"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.Style}" id="ot12"/>
+              </af:column>
+              <af:column sortProperty="EndUser" filterable="true"
+                         sortable="true" headerText="End User" id="c11"
+                         align="center" filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.EndUser}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="ItemDescription" filterable="true"
+                         sortable="true"
+                         headerText="Item Description"
+                         id="c10" width="120" align="center"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.ItemDescription}" id="ot6"/>
+              </af:column>
+              <af:column headerText="Order Qty"
+                         id="c17" align="center" sortable="true"
+                         filterable="true" sortProperty="OrderQty">
+                <af:commandLink id="ot14" text="#{row.OrderQtyAll}"
+                                actionListener="#{ManagedBean.GoBpoFormWithPocId}"/>
+              </af:column>
+              <af:column id="c4" headerText="Approval" align="center"
+                         sortable="true" filterable="true"
+                         sortProperty="GmStatus"
+                         filterFeatures="caseInsensitive">
+                <af:inputText value="#{row.bindings.GmStatus.inputValue}"
+                              label="#{bindings.XX_OM_POC_H_TVO1.hints.GmStatus.label}"
+                              required="#{bindings.XX_OM_POC_H_TVO1.hints.GmStatus.mandatory}"
+                              columns="#{bindings.XX_OM_POC_H_TVO1.hints.GmStatus.displayWidth}"
+                              maximumLength="#{bindings.XX_OM_POC_H_TVO1.hints.GmStatus.precision}"
+                              shortDesc="#{bindings.XX_OM_POC_H_TVO1.hints.GmStatus.tooltip}"
+                              id="it1">
+                  <f:validator binding="#{row.bindings.GmStatus.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="Brand" filterable="true" sortable="true"
+                         headerText="Brand" id="c9" align="center"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.Brand}" id="ot11"/>
+              </af:column>
+              <af:column id="c16" width="80" align="center">
+                <af:commandLink text="GO to BOM" id="cl2"
+                                actionListener="#{ManagedBean.goToBom}"/>
+              </af:column>
+              <af:column id="c3" headerText="Created By" align="center"
+                         sortable="false" filterable="false"
+                         sortProperty="CreatedByName" width="120">
+                <af:outputText value="#{row.CreatedByName}" id="ot9"/>
+              </af:column>
+              <af:column id="c15" headerText="Status" align="center"
+                         sortable="true" filterable="true" width="80">
+                <af:outputText value="#{row.Status}" id="ot7">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.XX_OM_POC_H_TVO1.hints.Status.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="OrderQty" filterable="true"
+                         sortable="true" headerText="COSTING QTY" id="c12"
+                         align="center">
+                <af:commandLink id="ot10" text="#{row.OrderQty}" visible="true"
+                                actionListener="#{ManagedBean.GoBpoFormWithPocId}"/>
+              </af:column>
+              <af:column sortProperty="StyleDescription" filterable="true"
+                         sortable="true" headerText="Style Description" id="c5"
+                         width="120" align="center"
+                         filterFeatures="caseInsensitive">
+                <af:outputText value="#{row.StyleDescription}" id="ot1"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelHeader>
+        <af:popup id="p1">
+          <af:dialog id="d2" title="Are you sure want to copy?"
+                     inlineStyle="color:Red; font-weight:bold;"
+                     dialogListener="#{ManagedBean.DialogCopy}"/>
+        </af:popup>
+        <af:popup id="p2">
+          <af:dialog id="d3" title="Are you sure want to Create Version?"
+                     dialogListener="#{ManagedBean.CreateVersion}"/>
+        </af:popup>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
