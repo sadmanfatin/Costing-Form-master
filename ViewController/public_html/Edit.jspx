@@ -62,7 +62,8 @@
                       <af:commandButton text="Save" id="cb1"
                                         inlineStyle="height:30px;"
                                         action="#{ManagedBean.refershButton}"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"/>
+                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
+                                        partialSubmit="true"/>
                       <af:spacer width="10" height="10" id="s7"/>
                       <af:commandButton actionListener="#{bindings.Rollback.execute}"
                                         text="Back" id="cb3"
@@ -273,7 +274,7 @@
                       <af:commandButton actionListener="#{bindings.Delete.execute}"
                                         text="Delete"
                                         disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        id="cb5"/>
+                                        id="cb5" partialSubmit="true"/>
                     </af:toolbar>
                   </af:toolbar>
                 </f:facet>
@@ -291,7 +292,7 @@
                           selectionListener="#{bindings.XX_OM_POC_L_TVO1.collectionModel.makeCurrent}"
                           rowSelection="single" id="t1"
                           styleClass="AFStretchWidth"
-                          partialTriggers="::cb4 ::cb5"
+                          partialTriggers="::cb4 ::cb5 :::cb1"
                           editingMode="clickToEdit"
                           binding="#{ManagedBean.subCostingTable}"
                           autoHeightRows="-1">
@@ -896,17 +897,20 @@
                       <af:commandButton actionListener="#{bindings.CreateInsert1.execute}"
                                         text="Create"
                                         disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        id="cb7" partialSubmit="true"/>
+                                        id="cb7" partialSubmit="true"
+                                        clientComponent="true"/>
                       <af:commandButton actionListener="#{bindings.Delete1.execute}"
                                         text="Delete"
                                         disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        id="cb8"/>
+                                        id="cb8" partialSubmit="true"/>
                       <af:commandButton text="Copy" id="cb2"
                                         actionListener="#{ManagedBean.CopyItem_Detail_Bind}"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"/>
+                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
+                                        partialSubmit="true"/>
                       <af:commandButton text="Populate from Previous" id="cb15"
                                         inlineStyle="font-weight:bold;"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}">
+                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
+                                        partialSubmit="true">
                         <af:showPopupBehavior popupId="::p3"/>
                       </af:commandButton>
                     </af:toolbar>
@@ -924,7 +928,7 @@
                             selectedRowKeys="#{bindings.XX_OM_POC_D1_TVO1.collectionModel.selectedRow}"
                             selectionListener="#{bindings.XX_OM_POC_D1_TVO1.collectionModel.makeCurrent}"
                             rowSelection="single" id="t4"
-                            partialTriggers=":::pc1:t1 ::cb7 ::cb8 :::pc4:cb13 :::pc4:cb14"
+                            partialTriggers=":::pc1:t1 ::cb7 ::cb8 :::pc4:cb13 :::pc4:cb14 ::cb2"
                             editingMode="clickToEdit"
                             binding="#{ManagedBean.itemTable}" visible="true">
                     <af:column id="c28" headerText="Sr. No" align="center"
@@ -1387,11 +1391,11 @@
                       <af:commandButton actionListener="#{bindings.CreateInsert4.execute}"
                                         text="Create"
                                         disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        id="cb9"/>
+                                        id="cb9" partialSubmit="true"/>
                       <af:commandButton actionListener="#{bindings.Delete4.execute}"
                                         text="Delete"
                                         disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        id="cb12"/>
+                                        id="cb12" partialSubmit="true"/>
                     </af:toolbar>
                   </f:facet>
                   <f:facet name="statusbar"/>
