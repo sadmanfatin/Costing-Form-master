@@ -1026,7 +1026,8 @@
                                     id="it23" autoSubmit="true"
                                     binding="#{ManagedBean.actualUnitPrice}"
                                     valueChangeListener="#{ManagedBean.commonListener}"
-                                    required="true" readOnly="false">
+                                    required="true" readOnly="false"
+                                    partialTriggers="itemPrefixDescId">
                         <f:validator binding="#{row.bindings.ActualUnitPrice.validator}"/>
                         <af:convertNumber groupingUsed="false"
                                           pattern="#{bindings.XX_OM_POC_D1_TVO1.hints.ActualUnitPrice.format}"/>
@@ -1131,7 +1132,7 @@
                     </af:column>
                     <af:column id="c17" headerText="Cost per Pcs"
                                filterable="true" sortable="true" align="center"
-                               width="60" sortProperty="CostPerPcs"
+                               width="90" sortProperty="CostPerPcs"
                                visible="true">
                       <af:inputText value="#{row.bindings.CostPerPcs.inputValue}"
                                     label="#{bindings.XX_OM_POC_D1_TVO1.hints.CostPerPcs.label}"
@@ -1149,11 +1150,12 @@
                       <f:facet name="footer">
                         <af:panelGroupLayout id="pgl13"
                                              inlineStyle="height:21px;">
-                          <af:outputText value="Total:" id="ot28"
-                                         inlineStyle="color:Black; font-weight:bold; background-color:InfoBackground;"/>
-                          <af:outputText value="#{bindings.fab_total.inputValue}"
-                                         id="ot25"
-                                         inlineStyle="font-weight:bolder; background-color:InactiveBorder;"/>
+                          <af:panelLabelAndMessage label="Total: " id="plam25">
+                            <af:outputText value="#{bindings.fab_total.inputValue}"
+                                           id="ot25"
+                                           inlineStyle="font-weight:bolder; background-color:InactiveBorder;"
+                                           partialTriggers="it15 it44 it23 it43"/>
+                          </af:panelLabelAndMessage>
                         </af:panelGroupLayout>
                       </f:facet>
                     </af:column>
@@ -1617,12 +1619,13 @@
                       </af:inputText>
                       <f:facet name="footer">
                         <af:panelGroupLayout id="pgl12" layout="horizontal">
-                          <af:panelLabelAndMessage label="Trims Total:"
+                          <af:panelLabelAndMessage label="Total:"
                                                    id="plam6"
                                                    inlineStyle="font-weight:bolder; color:Black;">
                             <af:outputText value="#{bindings.trims_total.inputValue}"
                                            id="ot23"
-                                           inlineStyle="color:Black; background-color:InfoBackground;"/>
+                                           inlineStyle="color:Black; background-color:InfoBackground;"
+                                           partialTriggers="it94 it54 it95 it92"/>
                           </af:panelLabelAndMessage>
                         </af:panelGroupLayout>
                       </f:facet>
@@ -2144,7 +2147,8 @@
                                       columns="#{bindings.XX_OM_POC_D2_TVO1.hints.ManualPrice.displayWidth}"
                                       maximumLength="#{bindings.XX_OM_POC_D2_TVO1.hints.ManualPrice.precision}"
                                       shortDesc="#{bindings.XX_OM_POC_D2_TVO1.hints.ManualPrice.tooltip}"
-                                      id="it70" required="true">
+                                      id="it70" required="true"
+                                      autoSubmit="true">
                           <f:validator binding="#{row.bindings.ManualPrice.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.XX_OM_POC_D2_TVO1.hints.ManualPrice.format}"/>
@@ -2155,7 +2159,7 @@
                                                inlineStyle="height:34px; background-color:InfoBackground;">
                             <af:outputText value="Total:" id="ot30"/>
                             <af:outputText value="#{bindings.D2_TVO_total.inputValue}"
-                                           id="ot29"/>
+                                           id="ot29" partialTriggers="it70"/>
                           </af:panelGroupLayout>
                         </f:facet>
                       </af:column>
@@ -2294,7 +2298,8 @@
                                       columns="#{bindings.XX_OM_POC_D2_TVO2_1.hints.ManualPrice.displayWidth}"
                                       maximumLength="#{bindings.XX_OM_POC_D2_TVO2_1.hints.ManualPrice.precision}"
                                       shortDesc="#{bindings.XX_OM_POC_D2_TVO2_1.hints.ManualPrice.tooltip}"
-                                      id="it75" required="true">
+                                      id="it75" required="true"
+                                      autoSubmit="true">
                           <f:validator binding="#{row.bindings.ManualPrice.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.XX_OM_POC_D2_TVO2_1.hints.ManualPrice.format}"/>
@@ -2306,7 +2311,7 @@
                                                inlineStyle="height:34px; background-color:InfoBackground;">
                             <af:outputText value="Total:" id="outputText1"/>
                             <af:outputText value="#{bindings.D2_TVO1_Total.inputValue}"
-                                           id="ot31"/>
+                                           id="ot31" partialTriggers="it75"/>
                           </af:panelGroupLayout>
                         </f:facet>
                       </af:column>
