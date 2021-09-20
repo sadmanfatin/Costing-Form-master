@@ -6,3 +6,5 @@
 *.jdb
 *.cdi_javac
 *.class
+*.class
+*.cdi_javac
