@@ -3024,4 +3024,61 @@ Double.parseDouble((getOteherConPcs().getValue().toString()));
                 row.setNewRowState(Row.STATUS_INITIALIZED);
         vo.getCurrentRow().setAttribute("ProcessId",2);
     }
+        
+        public void febric_costOf_value_cal(ValueChangeEvent valueChangeEvent) {
+            
+            ViewObject fabricView = appM.getXX_OM_POC_D1_TVO1();
+
+
+            double total = 0.00;
+            double actUnitpc = 0.00;
+            double val = 0.00;
+            double buffer = 0.00;
+
+
+            try {
+                actUnitpc =
+                        Double.parseDouble((getActualUnitPrice().getValue().toString()));
+                System.out.println("........................actUnitpc for trim= " +
+                                   actUnitpc);
+                //            double tes=Double.parseDouble((fabricView.getCurrentRow().getAttribute("ActualUnitPrice").toString()));
+                //            double te=Double.parseDouble((fabricView.getCurrentRow().getAttribute("PrefixDesc").toString()));
+                //            System.out.println("......................current..actUnitpc for trim= "+tes);
+                //            System.out.println("........................prefix for trim= "+te);
+            } catch (Exception e) {
+                actUnitpc = 0.00;
+            }
+
+            try {
+                val =
+            Double.parseDouble((this.getConsPerPcs().getValue().toString()));
+                // double test=Double.parseDouble((fabricView.getCurrentRow().getAttribute("ConsPerPcs").toString()));
+                System.out.println("........................actCons for trim= " +
+                                   val);
+            } catch (Exception e) {
+                val = 0.00;
+            }
+
+
+            try {
+                buffer =
+                        Double.parseDouble((this.getBuffer().getValue().toString()));
+            } catch (Exception e) {
+                buffer = 0.00;
+            }
+            // AdfFacesContext.getCurrentInstance().addPartialTarget(bpoQt_value);
+            //System.out.println(" Total BPO Qty------------>"+getBPOTotalQty());
+
+
+            total = (val * actUnitpc) + buffer;
+            // TrimCost=( trimsFinance_with_percentage/100)+total;
+            fabricView.getCurrentRow().setAttribute("CostPerPcs", total);
+            fabricView.getCurrentRow().setAttribute("FinalCostPerPcs", total);
+
+
+            AdfFacesContext.getCurrentInstance().addPartialTarget(costPerPcs);
+
+
+        }
+        
 }

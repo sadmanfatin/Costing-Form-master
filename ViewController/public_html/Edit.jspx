@@ -1025,7 +1025,7 @@
                                     shortDesc="#{bindings.XX_OM_POC_D1_TVO1.hints.ActualUnitPrice.tooltip}"
                                     id="it23" autoSubmit="true"
                                     binding="#{ManagedBean.actualUnitPrice}"
-                                    valueChangeListener="#{ManagedBean.commonListener}"
+                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}"
                                     required="true" readOnly="false"
                                     partialTriggers="itemPrefixDescId">
                         <f:validator binding="#{row.bindings.ActualUnitPrice.validator}"/>
@@ -1046,7 +1046,7 @@
                                     id="it30"
                                     binding="#{ManagedBean.addChargLC}"
                                     autoSubmit="true" partialTriggers="it29"
-                                    valueChangeListener="#{ManagedBean.commonListener}"
+                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}"
                                     readOnly="#{row.bindings.AddCrgPrcnt.inputValue=='0'? 'false':'true'}"
                                     required="true">
                         <f:validator binding="#{row.bindings.AddChargeLc.validator}"/>
@@ -1103,7 +1103,7 @@
                                     id="it43"
                                     binding="#{ManagedBean.consPerPcs}"
                                     autoSubmit="true"
-                                    valueChangeListener="#{ManagedBean.commonListener}"
+                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}"
                                     partialTriggers="itemPrefixDescId"
                                     required="true">
                         <f:validator binding="#{row.bindings.ConsPerPcs.validator}"/>
@@ -1142,7 +1142,8 @@
                                     shortDesc="#{bindings.XX_OM_POC_D1_TVO1.hints.CostPerPcs.tooltip}"
                                     id="it15" readOnly="true"
                                     binding="#{ManagedBean.costPerPcs}"
-                                    autoSubmit="true">
+                                    autoSubmit="true"
+                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}">
                         <f:validator binding="#{row.bindings.CostPerPcs.validator}"/>
                         <af:convertNumber groupingUsed="false"
                                           pattern="#{bindings.XX_OM_POC_D1_TVO1.hints.CostPerPcs.format}"/>
