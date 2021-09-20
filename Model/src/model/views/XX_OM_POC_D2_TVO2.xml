@@ -22,7 +22,7 @@
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
-    <![CDATA[SELECT  xx.PROCESS_NAME Process_Namee, xx.MANUAL_PRICE MANUAL_PRICEE,
+    <![CDATA[SELECT  
 XX_OM_POC_D2_TEO.ID, 
        XX_OM_POC_D2_TEO.DETAIL_ID, 
        XX_OM_POC_D2_TEO.FOB_ID, 
@@ -37,129 +37,96 @@ XX_OM_POC_D2_TEO.ID,
        XX_OM_POC_D2_TEO.CREATION_DATE, 
        XX_OM_POC_D2_TEO.LAST_UPDATED_BY, 
        XX_OM_POC_D2_TEO.LAST_UPDATED_DATE
-FROM XX_OM_POC_D2_T XX_OM_POC_D2_TEO,(select ID,PROCESS_NAME, MANUAL_PRICE from  XX_OM_POC_D2_T )xx
- where XX_OM_POC_D2_TEO.PROCESS_ID=2 and xx.ID=XX_OM_POC_D2_TEO.ID]]>
+FROM XX_OM_POC_D2_T XX_OM_POC_D2_TEO
+ where XX_OM_POC_D2_TEO.PROCESS_ID=2]]>
   </SQLQuery>
   <EntityUsage
-    Name="XX_OM_POC_D2_TEO"
-    Entity="model.entity.XX_OM_POC_D2_TEO"/>
-  <ViewAttribute
-    Name="ProcessNamee"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="1000"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="PROCESS_NAMEE"
-    Expression="PROCESS_NAMEE"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="ManualPricee"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    AliasName="MANUAL_PRICEE"
-    Expression="MANUAL_PRICEE"
-    SQLType="NUMERIC">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="39"/>
-    </DesignTime>
-  </ViewAttribute>
+    Name="XX_OM_POC_D2_TEO2"
+    Entity="model.entity.XX_OM_POC_D2_TEO2"/>
   <ViewAttribute
     Name="Id"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Id"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="ID"/>
   <ViewAttribute
     Name="DetailId"
     PrecisionRule="true"
     EntityAttrName="DetailId"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="DETAIL_ID"/>
   <ViewAttribute
     Name="FobId"
     PrecisionRule="true"
     EntityAttrName="FobId"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="FOB_ID"/>
   <ViewAttribute
     Name="ProcessId"
     PrecisionRule="true"
     EntityAttrName="ProcessId"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="PROCESS_ID"/>
   <ViewAttribute
     Name="ProcessName"
     PrecisionRule="true"
     EntityAttrName="ProcessName"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="PROCESS_NAME"/>
   <ViewAttribute
     Name="CostAmount"
     PrecisionRule="true"
     EntityAttrName="CostAmount"
-    EntityUsage="XX_OM_POC_D2_TEO"
-    AliasName="COST_AMOUNT"
-    DefaultValue="0"/>
+    EntityUsage="XX_OM_POC_D2_TEO2"
+    AliasName="COST_AMOUNT"/>
   <ViewAttribute
     Name="Profit"
     PrecisionRule="true"
     EntityAttrName="Profit"
-    EntityUsage="XX_OM_POC_D2_TEO"
-    AliasName="PROFIT"
-    DefaultValue="0"/>
+    EntityUsage="XX_OM_POC_D2_TEO2"
+    AliasName="PROFIT"/>
   <ViewAttribute
     Name="ManualPrice"
     PrecisionRule="true"
     EntityAttrName="ManualPrice"
-    EntityUsage="XX_OM_POC_D2_TEO"
-    AliasName="MANUAL_PRICE"
-    DefaultValue="0"/>
+    EntityUsage="XX_OM_POC_D2_TEO2"
+    AliasName="MANUAL_PRICE"/>
   <ViewAttribute
     Name="Total"
     PrecisionRule="true"
     EntityAttrName="Total"
-    EntityUsage="XX_OM_POC_D2_TEO"
-    AliasName="TOTAL"
-    DefaultValue="0"/>
+    EntityUsage="XX_OM_POC_D2_TEO2"
+    AliasName="TOTAL"/>
   <ViewAttribute
     Name="CostUom"
     PrecisionRule="true"
     EntityAttrName="CostUom"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="COST_UOM"/>
   <ViewAttribute
     Name="CreatedBy"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="CREATED_BY"/>
   <ViewAttribute
     Name="CreationDate"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="CREATION_DATE"/>
   <ViewAttribute
     Name="LastUpdatedBy"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="LAST_UPDATED_BY"/>
   <ViewAttribute
     Name="LastUpdatedDate"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedDate"
-    EntityUsage="XX_OM_POC_D2_TEO"
+    EntityUsage="XX_OM_POC_D2_TEO2"
     AliasName="LAST_UPDATED_DATE"/>
   <ResourceBundle>
     <PropertiesBundle

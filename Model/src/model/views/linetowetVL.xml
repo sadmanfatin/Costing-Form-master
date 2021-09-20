@@ -5,7 +5,8 @@
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="linetowetVL"
   Version="11.1.1.62.29"
-  InheritPersonalization="true">
+  InheritPersonalization="true"
+  EntityAssociation="model.entity.LineEO_vs_wetEO_assoc">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
@@ -36,9 +37,7 @@
       <Attr Name="_finderName" Value="XX_OM_POC_D2_TVO2"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="model.views.XX_OM_POC_D2_TVO2.FobId"/>
-    </AttrArray>
+    <AttrArray Name="Attributes"/>
   </ViewLinkDefEnd>
   <ResourceBundle>
     <PropertiesBundle

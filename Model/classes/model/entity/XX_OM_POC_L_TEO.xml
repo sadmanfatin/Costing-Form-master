@@ -483,6 +483,13 @@
     AssociationOtherEnd="model.entity.line_fobviad2_fobassoc.XX_OM_POC_L_TEO"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="XX_OM_POC_D2_TEO2"
+    Association="model.entity.LineEO_vs_wetEO_assoc"
+    AssociationEnd="model.entity.LineEO_vs_wetEO_assoc.XX_OM_POC_D2_TEO2"
+    AssociationOtherEnd="model.entity.LineEO_vs_wetEO_assoc.XX_OM_POC_L_TEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="XxOmPocLPk"
     PrimaryKey="true">

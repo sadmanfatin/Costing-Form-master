@@ -441,6 +441,16 @@ public class XX_OM_POC_L_TEOImpl extends EntityImpl {
                 obj.setAttributeInternal(index(), value);
             }
         }
+        ,
+        XX_OM_POC_D2_TEO2 {
+            public Object get(XX_OM_POC_L_TEOImpl obj) {
+                return obj.getXX_OM_POC_D2_TEO2();
+            }
+
+            public void put(XX_OM_POC_L_TEOImpl obj, Object value) {
+                obj.setAttributeInternal(index(), value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static int firstIndex = 0;
@@ -512,6 +522,7 @@ public class XX_OM_POC_L_TEOImpl extends EntityImpl {
     public static final int XX_OM_POC_H_TEO = AttributesEnum.XX_OM_POC_H_TEO.index();
     public static final int XX_OM_POC_D1_TEO = AttributesEnum.XX_OM_POC_D1_TEO.index();
     public static final int XX_OM_POC_D2_TEO = AttributesEnum.XX_OM_POC_D2_TEO.index();
+    public static final int XX_OM_POC_D2_TEO2 = AttributesEnum.XX_OM_POC_D2_TEO2.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1218,6 +1229,13 @@ public class XX_OM_POC_L_TEOImpl extends EntityImpl {
         return (RowIterator)getAttributeInternal(XX_OM_POC_D2_TEO);
     }
 
+
+    /**
+     * @return the associated entity oracle.jbo.RowIterator.
+     */
+    public RowIterator getXX_OM_POC_D2_TEO2() {
+        return (RowIterator)getAttributeInternal(XX_OM_POC_D2_TEO2);
+    }
 
     /**
      * @param fobId key constituent

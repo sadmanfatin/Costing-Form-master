@@ -15,246 +15,231 @@
           <f:facet name="toolbar"/>
           <f:facet name="legend"/>
           <f:facet name="info"/>
-          <af:spacer width="10" height="10" id="s12"/>
-          <af:panelHeader text=" " id="ph2"
-                          styleClass="AFStretchWidth">
-            <f:facet name="context"/>
-            <f:facet name="menuBar"/>
-            <f:facet name="toolbar"/>
-            <f:facet name="legend"/>
-            <f:facet name="info"/>
-            <af:panelGroupLayout id="pgl1"
-                                 layout="horizontal"
-                                 styleClass="AFStretchWidth">
-              <af:panelFormLayout id="pfl1" maxColumns="4" rows="6">
-                <f:facet name="footer">
-                  <af:group id="g1">
-                    <af:separator id="s1" rendered="false"/>
-                    <af:panelGroupLayout id="pgl2" layout="horizontal"
-                                         inlineStyle="width:496px; height:61px;">
-                      <af:panelHeader text="Search Criteria" id="ph3"
-                                      inlineStyle="height:45px;"
-                                      rendered="false">
-                        <f:facet name="context"/>
-                        <f:facet name="menuBar"/>
-                        <f:facet name="toolbar"/>
-                        <f:facet name="legend"/>
-                        <f:facet name="info"/>
-                      </af:panelHeader>
-                      <af:spacer width="300" height="10" id="s2"/>
-                      <af:commandButton text="Send For Approval" id="cb19"
-                                        inlineStyle="height:30px;"
-                                        action="#{ManagedBean.sendForApproval}"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"/>
-                      <af:spacer width="10" height="10" id="s4"/>
-                      <af:commandButton text=" BPO Details" id="cb20"
-                                        inlineStyle="height:30px;"
-                                        disabled="#{bindings.GmApproval.inputValue=='Y'? 'false':'true'}"
-                                        actionListener="#{ManagedBean.GoBpoFormWithPocId}"/>
-                      <af:spacer width="10" height="10" id="s5"/>
-                      <af:commandButton text="Create Item" id="cb16"
-                                        inlineStyle="height:30px;"
-                                        shortDesc="Create items for sale order"
-                                        action="#{ManagedBean.createItem}"
-                                        partialTriggers="#{!bindings.Delete.enabled}"
-                                        disabled="#{bindings.GmApproval.inputValue=='N'? 'true':'false'}"/>
-                      <af:spacer width="10" height="10" id="s6"/>
-                      <af:commandButton text="Save" id="cb1"
-                                        inlineStyle="height:30px;"
-                                        action="#{ManagedBean.refershButton}"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
-                                        partialSubmit="true"/>
-                      <af:spacer width="10" height="10" id="s7"/>
-                      <af:commandButton actionListener="#{bindings.Rollback.execute}"
-                                        text="Back" id="cb3"
-                                        inlineStyle="height:30px;"
-                                        action="*GotoSearch"
-                                        shortDesc="Go Back to Search Page"
-                                        immediate="true">
-                        <af:resetActionListener/>
-                      </af:commandButton>
-                      <af:spacer width="10" height="10" id="s8"/>
-                      <af:commandButton text="Copy" id="cb17"
-                                        inlineStyle="height:30px;"
-                                        shortDesc="Copy either pre costing or sub costing"
-                                        disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}">
-                        <af:showPopupBehavior popupId="p2"/>
-                      </af:commandButton>
-                      <af:spacer width="10" height="10" id="s9"/>
-                    </af:panelGroupLayout>
-                  </af:group>
-                </f:facet>
-                <af:selectOneChoice value="#{bindings.LcUnit.inputValue}"
-                                    label="Unit :"
-                                    shortDesc="#{bindings.LcUnit.hints.tooltip}"
-                                    id="soc7" showRequired="false"
-                                    required="true" autoSubmit="true"
-                                    valueChangeListener="#{ManagedBean.productionListener}"
-                                    binding="#{ManagedBean.productionUnit}"
-                                    readOnly="#{(bindings.VersionNo.inputValue!='1'? 'true':'false')||(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.LcUnit.items}" id="si7"/>
-                </af:selectOneChoice>
-                <af:inputListOfValues id="buyerId"
-                                      popupTitle="Search and Select: #{bindings.Buyer.hints.label}"
-                                      value="#{bindings.Buyer.inputValue}"
-                                      label="Buyer :"
-                                      model="#{bindings.Buyer.listOfValuesModel}"
-                                      columns="#{bindings.Buyer.hints.displayWidth}"
-                                      shortDesc="#{bindings.Buyer.hints.tooltip}"
-                                      showRequired="true" required="true"
-                                      autoSubmit="true"
-                                      readOnly="#{(bindings.VersionNo.inputValue!='1'? 'true':'false')||(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:validator binding="#{bindings.Buyer.validator}"/>
-                  <af:autoSuggestBehavior suggestedItems="#{bindings.Buyer.suggestedItems}"/>
-                </af:inputListOfValues>
-                <af:selectOneChoice value="#{bindings.Season.inputValue}"
-                                    label="Season:"
-                                    shortDesc="#{bindings.Season.hints.tooltip}"
-                                    id="soc1" partialTriggers="buyerId"
+          <af:panelGroupLayout id="pgl1" layout="horizontal"
+                               styleClass="AFStretchWidth">
+            <af:panelFormLayout id="pfl1" maxColumns="4" rows="6">
+              <f:facet name="footer">
+                <af:group id="g1">
+                  <af:separator id="s1" rendered="false"/>
+                  <af:panelGroupLayout id="pgl2" layout="horizontal"
+                                       inlineStyle="width:496px; height:61px;">
+                    <af:panelHeader text="Search Criteria" id="ph3"
+                                    inlineStyle="height:45px;" rendered="false">
+                      <f:facet name="context"/>
+                      <f:facet name="menuBar"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="legend"/>
+                      <f:facet name="info"/>
+                    </af:panelHeader>
+                    <af:spacer width="300" height="10" id="s2"/>
+                    <af:commandButton text="Send For Approval" id="cb19"
+                                      inlineStyle="height:30px;"
+                                      action="#{ManagedBean.sendForApproval}"
+                                      disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"/>
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:commandButton text=" BPO Details" id="cb20"
+                                      inlineStyle="height:30px;"
+                                      disabled="#{bindings.GmApproval.inputValue=='Y'? 'false':'true'}"
+                                      actionListener="#{ManagedBean.GoBpoFormWithPocId}"/>
+                    <af:spacer width="10" height="10" id="s5"/>
+                    <af:commandButton text="Create Item" id="cb16"
+                                      inlineStyle="height:30px;"
+                                      shortDesc="Create items for sale order"
+                                      action="#{ManagedBean.createItem}"
+                                      partialTriggers="#{!bindings.Delete.enabled}"
+                                      disabled="#{bindings.GmApproval.inputValue=='N'? 'true':'false'}"/>
+                    <af:spacer width="10" height="10" id="s6"/>
+                    <af:commandButton text="Save" id="cb1"
+                                      inlineStyle="height:30px;"
+                                      action="#{ManagedBean.refershButton}"
+                                      disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}"
+                                      partialSubmit="true"/>
+                    <af:spacer width="10" height="10" id="s7"/>
+                    <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                      text="Back" id="cb3"
+                                      inlineStyle="height:30px;"
+                                      action="*GotoSearch"
+                                      shortDesc="Go Back to Search Page"
+                                      immediate="true">
+                      <af:resetActionListener/>
+                    </af:commandButton>
+                    <af:spacer width="10" height="10" id="s8"/>
+                    <af:commandButton text="Copy" id="cb17"
+                                      inlineStyle="height:30px;"
+                                      shortDesc="Copy either pre costing or sub costing"
+                                      disabled="#{(bindings.GmApproval.inputValue=='Y')||(bindings.GmApproval.inputValue=='I')? 'true':'false'}">
+                      <af:showPopupBehavior popupId="p2"/>
+                    </af:commandButton>
+                    <af:spacer width="10" height="10" id="s9"/>
+                  </af:panelGroupLayout>
+                </af:group>
+              </f:facet>
+              <af:selectOneChoice value="#{bindings.LcUnit.inputValue}"
+                                  label="Unit :"
+                                  shortDesc="#{bindings.LcUnit.hints.tooltip}"
+                                  id="soc7" showRequired="false" required="true"
+                                  autoSubmit="true"
+                                  valueChangeListener="#{ManagedBean.productionListener}"
+                                  binding="#{ManagedBean.productionUnit}"
+                                  readOnly="#{(bindings.VersionNo.inputValue!='1'? 'true':'false')||(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.LcUnit.items}" id="si7"/>
+              </af:selectOneChoice>
+              <af:inputListOfValues id="buyerId"
+                                    popupTitle="Search and Select: #{bindings.Buyer.hints.label}"
+                                    value="#{bindings.Buyer.inputValue}"
+                                    label="Buyer :"
+                                    model="#{bindings.Buyer.listOfValuesModel}"
+                                    columns="#{bindings.Buyer.hints.displayWidth}"
+                                    shortDesc="#{bindings.Buyer.hints.tooltip}"
                                     showRequired="true" required="true"
+                                    autoSubmit="true"
                                     readOnly="#{(bindings.VersionNo.inputValue!='1'? 'true':'false')||(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.Season.items}" id="si1"/>
-                </af:selectOneChoice>
-                <af:selectOneChoice value="#{bindings.Brand.inputValue}"
-                                    label="Brand:"
-                                    shortDesc="#{bindings.Brand.hints.tooltip}"
-                                    id="soc2" partialTriggers="buyerId"
-                                    readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.Brand.items}" id="si2"/>
-                </af:selectOneChoice>
-                <af:inputText value="#{bindings.Style.inputValue}"
-                              label="Style No/Name:"
-                              columns="#{bindings.Style.hints.displayWidth}"
-                              maximumLength="#{bindings.Style.hints.precision}"
-                              shortDesc="#{bindings.Style.hints.tooltip}"
-                              id="it1" required="true" showRequired="true"
-                              readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}"
-                              autoSubmit="true">
-                  <f:validator binding="#{bindings.Style.validator}"/>
-                </af:inputText>
-                <af:selectOneChoice value="#{bindings.Fit.inputValue}"
-                                    label="Fit:"
-                                    shortDesc="#{bindings.Fit.hints.tooltip}"
-                                    id="soc4" required="true"
-                                    readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.Fit.items}" id="si4"/>
-                </af:selectOneChoice>
-                <af:selectOneChoice value="#{bindings.EndUser.inputValue}"
-                                    label="End User:"
-                                    shortDesc="#{bindings.EndUser.hints.tooltip}"
-                                    id="soc5" required="true"
-                                    readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.EndUser.items}" id="si5"/>
-                </af:selectOneChoice>
-                <af:selectOneChoice value="#{bindings.ItemDescription.inputValue}"
-                                    label="Item Description:"
-                                    shortDesc="#{bindings.ItemDescription.hints.tooltip}"
-                                    id="soc6" required="true"
-                                    readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.ItemDescription.items}"
-                                 id="si6"/>
-                </af:selectOneChoice>
-                <af:inputText value="#{bindings.OrderQty.inputValue}"
-                              label="Order Qty:"
-                              columns="#{bindings.OrderQty.hints.displayWidth}"
-                              maximumLength="#{bindings.OrderQty.hints.precision}"
-                              shortDesc="#{bindings.OrderQty.hints.tooltip}"
-                              id="it2" required="true"
-                              binding="#{ManagedBean.orderQty}"
-                              autoSubmit="true"
-                              readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:validator binding="#{bindings.OrderQty.validator}"/>
-                  <af:convertNumber groupingUsed="false"
-                                    pattern="#{bindings.OrderQty.format}"/>
-                </af:inputText>
-                <af:inputText value="#{bindings.CmMerchandiserD.inputValue}"
-                              label="CM Merch./Pc"
-                              columns="#{bindings.CmMerchandiserD.hints.displayWidth}"
-                              maximumLength="#{bindings.CmMerchandiserD.hints.precision}"
-                              shortDesc="#{bindings.CmMerchandiserD.hints.tooltip}"
-                              id="it25" showRequired="true" required="true"
-                              autoSubmit="true"
-                              valueChangeListener="#{ManagedBean.commonListener}"
-                              binding="#{ManagedBean.cmMerchandiser}"
-                              rendered="false">
-                  <f:validator binding="#{bindings.CmMerchandiserD.validator}"/>
-                </af:inputText>
-                <af:inputText value="#{bindings.StyleDescription.inputValue}"
-                              label="Style Description:"
-                              required="#{bindings.StyleDescription.hints.mandatory}"
-                              columns="#{bindings.StyleDescription.hints.displayWidth}"
-                              maximumLength="#{bindings.StyleDescription.hints.precision}"
-                              shortDesc="#{bindings.StyleDescription.hints.tooltip}"
-                              id="it3"
-                              readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:validator binding="#{bindings.StyleDescription.validator}"/>
-                </af:inputText>
-                <af:selectOneChoice value="#{bindings.Status1.inputValue}"
-                                    label="Status:"
-                                    required="#{bindings.Status1.hints.mandatory}"
-                                    shortDesc="#{bindings.Status1.hints.tooltip}"
-                                    id="soc13"
-                                    readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
-                  <f:selectItems value="#{bindings.Status1.items}" id="si18"/>
-                </af:selectOneChoice>
-                <af:inputText value="#{bindings.GmStatus.inputValue}"
-                              label="Approval Status:"
-                              required="#{bindings.GmStatus.hints.mandatory}"
-                              columns="#{bindings.GmStatus.hints.displayWidth}"
-                              maximumLength="#{bindings.GmStatus.hints.precision}"
-                              shortDesc="#{bindings.GmStatus.hints.tooltip}"
-                              id="it17" readOnly="true" disabled="false">
-                  <f:validator binding="#{bindings.GmStatus.validator}"/>
-                </af:inputText>
-                <af:panelLabelAndMessage label="POC ID"
-                                         id="plam1"
-                                         inlineStyle="font-size:small; font-weight:bold;">
-                  <af:outputText value="#{bindings.PocId.inputValue}" id="ot3">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PocId.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Creation Date"
-                                         id="plam23">
-                  <af:outputText value="#{bindings.CreationDate.inputValue}"
-                                 id="ot51"
-                                 inlineStyle="font-size:small; font-weight:bold;">
-                    <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Created By"
-                                         id="plam24">
-                  <af:outputText value="#{bindings.CreatedByName.inputValue}"
-                                 id="ot52"
-                                 inlineStyle="font-size:small; font-weight:bold;"/>
-                </af:panelLabelAndMessage>
-                <af:inputText value="#{bindings.PocId.inputValue}"
-                              label="#{bindings.PocId.hints.label}"
-                              required="#{bindings.PocId.hints.mandatory}"
-                              columns="#{bindings.PocId.hints.displayWidth}"
-                              maximumLength="#{bindings.PocId.hints.precision}"
-                              shortDesc="#{bindings.PocId.hints.tooltip}"
-                              id="it32" binding="#{ManagedBean.pocId}"
-                              visible="false">
-                  <f:validator binding="#{bindings.PocId.validator}"/>
+                <f:validator binding="#{bindings.Buyer.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.Buyer.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:selectOneChoice value="#{bindings.Season.inputValue}"
+                                  label="Season:"
+                                  shortDesc="#{bindings.Season.hints.tooltip}"
+                                  id="soc1" partialTriggers="buyerId"
+                                  showRequired="true" required="true"
+                                  readOnly="#{(bindings.VersionNo.inputValue!='1'? 'true':'false')||(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.Season.items}" id="si1"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.Brand.inputValue}"
+                                  label="Brand:"
+                                  shortDesc="#{bindings.Brand.hints.tooltip}"
+                                  id="soc2" partialTriggers="buyerId"
+                                  readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.Brand.items}" id="si2"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.Style.inputValue}"
+                            label="Style No/Name:"
+                            columns="#{bindings.Style.hints.displayWidth}"
+                            maximumLength="#{bindings.Style.hints.precision}"
+                            shortDesc="#{bindings.Style.hints.tooltip}" id="it1"
+                            required="true" showRequired="true"
+                            readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}"
+                            autoSubmit="true">
+                <f:validator binding="#{bindings.Style.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.Fit.inputValue}"
+                                  label="Fit:"
+                                  shortDesc="#{bindings.Fit.hints.tooltip}"
+                                  id="soc4" required="true"
+                                  readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.Fit.items}" id="si4"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.EndUser.inputValue}"
+                                  label="End User:"
+                                  shortDesc="#{bindings.EndUser.hints.tooltip}"
+                                  id="soc5" required="true"
+                                  readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.EndUser.items}" id="si5"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.ItemDescription.inputValue}"
+                                  label="Item Description:"
+                                  shortDesc="#{bindings.ItemDescription.hints.tooltip}"
+                                  id="soc6" required="true"
+                                  readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.ItemDescription.items}"
+                               id="si6"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.OrderQty.inputValue}"
+                            label="Order Qty:"
+                            columns="#{bindings.OrderQty.hints.displayWidth}"
+                            maximumLength="#{bindings.OrderQty.hints.precision}"
+                            shortDesc="#{bindings.OrderQty.hints.tooltip}"
+                            id="it2" required="true"
+                            binding="#{ManagedBean.orderQty}" autoSubmit="true"
+                            readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:validator binding="#{bindings.OrderQty.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.OrderQty.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CmMerchandiserD.inputValue}"
+                            label="CM Merch./Pc"
+                            columns="#{bindings.CmMerchandiserD.hints.displayWidth}"
+                            maximumLength="#{bindings.CmMerchandiserD.hints.precision}"
+                            shortDesc="#{bindings.CmMerchandiserD.hints.tooltip}"
+                            id="it25" showRequired="true" required="true"
+                            autoSubmit="true"
+                            valueChangeListener="#{ManagedBean.commonListener}"
+                            binding="#{ManagedBean.cmMerchandiser}"
+                            rendered="false">
+                <f:validator binding="#{bindings.CmMerchandiserD.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.StyleDescription.inputValue}"
+                            label="Style Description:"
+                            required="#{bindings.StyleDescription.hints.mandatory}"
+                            columns="#{bindings.StyleDescription.hints.displayWidth}"
+                            maximumLength="#{bindings.StyleDescription.hints.precision}"
+                            shortDesc="#{bindings.StyleDescription.hints.tooltip}"
+                            id="it3"
+                            readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:validator binding="#{bindings.StyleDescription.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.Status1.inputValue}"
+                                  label="Status:"
+                                  required="#{bindings.Status1.hints.mandatory}"
+                                  shortDesc="#{bindings.Status1.hints.tooltip}"
+                                  id="soc13"
+                                  readOnly="#{(bindings.VersionNo.inputValue =='1'? 'true':'false')&amp;&amp;(bindings.GmApproval.inputValue=='Y'? 'true':'false')}">
+                <f:selectItems value="#{bindings.Status1.items}" id="si18"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.GmStatus.inputValue}"
+                            label="Approval Status:"
+                            required="#{bindings.GmStatus.hints.mandatory}"
+                            columns="#{bindings.GmStatus.hints.displayWidth}"
+                            maximumLength="#{bindings.GmStatus.hints.precision}"
+                            shortDesc="#{bindings.GmStatus.hints.tooltip}"
+                            id="it17" readOnly="true" disabled="false">
+                <f:validator binding="#{bindings.GmStatus.validator}"/>
+              </af:inputText>
+              <af:panelLabelAndMessage label="POC ID" id="plam1"
+                                       inlineStyle="font-size:small; font-weight:bold;">
+                <af:outputText value="#{bindings.PocId.inputValue}" id="ot3">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PocId.format}"/>
-                </af:inputText>
-                <af:inputText value="#{bindings.VersionNo.inputValue}"
-                              label="Version No"
-                              required="#{bindings.VersionNo.hints.mandatory}"
-                              columns="#{bindings.VersionNo.hints.displayWidth}"
-                              maximumLength="#{bindings.VersionNo.hints.precision}"
-                              shortDesc="#{bindings.VersionNo.hints.tooltip}"
-                              id="it19" readOnly="false" visible="false"
-                              autoSubmit="true">
-                  <f:validator binding="#{bindings.VersionNo.validator}"/>
-                  <af:convertNumber groupingUsed="false"
-                                    pattern="#{bindings.VersionNo.format}"/>
-                </af:inputText>
-              </af:panelFormLayout>
-            </af:panelGroupLayout>
-          </af:panelHeader>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Creation Date" id="plam23">
+                <af:outputText value="#{bindings.CreationDate.inputValue}"
+                               id="ot51"
+                               inlineStyle="font-size:small; font-weight:bold;">
+                  <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Created By" id="plam24">
+                <af:outputText value="#{bindings.CreatedByName.inputValue}"
+                               id="ot52"
+                               inlineStyle="font-size:small; font-weight:bold;"/>
+              </af:panelLabelAndMessage>
+              <af:inputText value="#{bindings.PocId.inputValue}"
+                            label="#{bindings.PocId.hints.label}"
+                            required="#{bindings.PocId.hints.mandatory}"
+                            columns="#{bindings.PocId.hints.displayWidth}"
+                            maximumLength="#{bindings.PocId.hints.precision}"
+                            shortDesc="#{bindings.PocId.hints.tooltip}"
+                            id="it32" binding="#{ManagedBean.pocId}"
+                            visible="false">
+                <f:validator binding="#{bindings.PocId.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PocId.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.VersionNo.inputValue}"
+                            label="Version No"
+                            required="#{bindings.VersionNo.hints.mandatory}"
+                            columns="#{bindings.VersionNo.hints.displayWidth}"
+                            maximumLength="#{bindings.VersionNo.hints.precision}"
+                            shortDesc="#{bindings.VersionNo.hints.tooltip}"
+                            id="it19" readOnly="false" visible="false"
+                            autoSubmit="true">
+                <f:validator binding="#{bindings.VersionNo.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.VersionNo.format}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelGroupLayout>
           <af:panelTabbed id="pt1" styleClass="AFStretchWidth"
                           inlineStyle="height:250px;">
             <af:showDetailItem text="Sub Costing" id="sdi1"
@@ -1143,7 +1128,8 @@
                                     id="it15" readOnly="true"
                                     binding="#{ManagedBean.costPerPcs}"
                                     autoSubmit="true"
-                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}">
+                                    valueChangeListener="#{ManagedBean.febric_costOf_value_cal}"
+                                    partialTriggers="it23 it43">
                         <f:validator binding="#{row.bindings.CostPerPcs.validator}"/>
                         <af:convertNumber groupingUsed="false"
                                           pattern="#{bindings.XX_OM_POC_D1_TVO1.hints.CostPerPcs.format}"/>
@@ -2325,7 +2311,7 @@
               <af:panelGroupLayout id="pgl6" inlineStyle="width:900px;"
                                    partialTriggers="pc1:t1" layout="vertical">
                 <af:panelCollection id="pc7"
-                                    inlineStyle="width:1588px; height:150px;"
+                                    inlineStyle="width:1588px; height:220px;"
                                     styleClass="AFStretchWidth">
                   <f:facet name="menus"/>
                   <f:facet name="toolbar">
