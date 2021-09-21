@@ -51,6 +51,7 @@ import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
 import oracle.jbo.ApplicationModule;
+import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
@@ -211,14 +212,21 @@ public class ManagedBean {
         //OperationBinding ob1 = executeOperation("Commit");
       //  ob1.execute();
     appM.getDBTransaction().commit();
-
+        ViewObject lineVo = appM.getXX_OM_POC_L_TVO1();
         ViewObject vo = appM.getXX_OM_POC_D1_TVO1();
         ViewObject vo1 = appM.gettrimsVO1();
         ViewObject vo3 = appM.getothers_VO1();
        // ViewObject vo4 =appM.getXX_OM_POC_L_TVO1();
         ViewObject v5 = appM.getXX_OM_POC_D2_TVO1();
         ViewObject v6 = appM.getXX_OM_POC_D2_TVO2_1();
-  
+        
+         refreshQueryKeepingCurrentRow(lineVo); 
+       refreshQueryKeepingCurrentRow(vo);
+        refreshQueryKeepingCurrentRow(vo1);
+        refreshQueryKeepingCurrentRow(vo3);
+        refreshQueryKeepingCurrentRow(v5);
+        refreshQueryKeepingCurrentRow(v6 );
+     
         vo.clearCache();
         vo1.clearCache();
         vo3.clearCache();
@@ -1443,7 +1451,9 @@ Double.parseDouble(MnjLineV.getCurrentRow().getAttribute("Profit").toString());
         double costPerPcsVal = (finalUnitPriceVal * finalConsVal) + bufferVal;
         // if (costPerPcsVal > 0)
         // costPerPcsVal = Math.ceil((double)MyMath.roundTo3(costPerPcsVal)) ;
-        costPerPcs.setValue(MyMath.toNumber(MyMath.roundUp(costPerPcsVal)));
+        
+      //   appM.getXX_OM_POC_D1_TVO1().getCurrentRow().setAttribute("CostPerPcs" ,costPerPcsVal  );
+      costPerPcs.setValue(MyMath.toNumber(MyMath.roundUp(costPerPcsVal)));
         AdfFacesContext.getCurrentInstance().addPartialTarget(costPerPcs);
 
         //    System.out.println("=================== costPerPcsVal ================="+costPerPcsVal);
@@ -1469,8 +1479,7 @@ Double.parseDouble(MnjLineV.getCurrentRow().getAttribute("Profit").toString());
         // if (finalCostPerPcsVal > 0)
 
 
-        finalCostPerPcs.setValue(MyMath.toNumber(MyMath.roundUp(finalCostPerPcsVal +
-                                                                fabFinanceCostVal)));
+       finalCostPerPcs.setValue(MyMath.toNumber(MyMath.roundUp(finalCostPerPcsVal +  fabFinanceCostVal)));
 
 
         AdfFacesContext.getCurrentInstance().addPartialTarget(finalCostPerPcs);
@@ -2033,13 +2042,21 @@ Double.parseDouble(MnjLineV.getCurrentRow().getAttribute("Profit").toString());
         // Add event code here...
         try {
             populateBundlesRec();
+            refershButton();
+
             AdfFacesContext.getCurrentInstance().addPartialTarget(itemTable);
             AdfFacesContext.getCurrentInstance().addPartialTarget(dryDetailsTable);
             AdfFacesContext.getCurrentInstance().addPartialTarget(wetDetailsTable);
-
+            AdfFacesContext.getCurrentInstance().addPartialTarget(costPerPcs);
+            AdfFacesContext.getCurrentInstance().addPartialTarget(cost_per_pcs_trims);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+      
+
+        
+        
     }
 
     public void populateBundlesRec() {
@@ -3080,5 +3097,45 @@ Double.parseDouble((getOteherConPcs().getValue().toString()));
 
 
         }
+        
+        
+        
+        
+    public void refreshQueryKeepingCurrentRow(ViewObject viewObject )  {
+         
+         
+          Row currentRow;
+          Key currentRowKey;
+          
+          // added on 7.jan.18 to handle exception if view object has no current row
+         try{
+            currentRow = viewObject.getCurrentRow();
+            currentRowKey = currentRow.getKey();
+         }
+         catch(Exception e){
+             return;
+         }     
+        int rangePosOfCurrentRow = viewObject.getRangeIndexOf(currentRow);
+        int rangeStartBeforeQuery = viewObject.getRangeStart();
+        viewObject.executeQuery();
+        viewObject.setRangeStart(rangeStartBeforeQuery);
+        /*
+         * In 10.1.2, there is this convenience method we could use
+         * instead of the remaining lines of code
+         *
+         *  findAndSetCurrentRowByKey(currentRowKey,rangePosOfCurrentRow);
+         *  
+         */
+        
+          
+        Row[] rows = viewObject.findByKey(currentRowKey, 1);
+        if (rows != null && rows.length == 1)
+        {
+           viewObject.scrollRangeTo(rows[0], rangePosOfCurrentRow);
+           viewObject.setCurrentRowAtRangeIndex(viewObject.getRangeIndexOf(rows[0]));
+        }
+        
+                
+      }
         
 }

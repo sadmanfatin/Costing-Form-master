@@ -2348,7 +2348,7 @@
                     <af:column sortProperty="ItemPrefixDesc" filterable="true"
                                sortable="true"
                                headerText="Item"
-                               id="c102" width="150" showRequired="true"
+                               id="c102" width="160" showRequired="true"
                                align="center">
                       <af:inputListOfValues id="inputListOfValues2"
                                             popupTitle="Search and Select: #{bindings.others_VO1.hints.ItemPrefixDesc.label}"
@@ -2449,13 +2449,13 @@
                                           pattern="#{bindings.others_VO1.hints.CostPerPcs.format}"/>
                       </af:inputText>
                       <f:facet name="footer">
-                        <af:panelGroupLayout id="pgl14">
-                          <af:outputText value="TOTAL:" id="ot27"
-                                         inlineStyle="color:Black; font-weight:bold; background-color:InfoBackground;"/>
-                          <af:outputText value="#{bindings.others_total.inputValue}"
-                                         id="ot26"
-                                         inlineStyle="background-color:InactiveBorder; font-weight:bolder;"/>
-                        </af:panelGroupLayout>
+                        <af:group id="g3">
+                          <af:panelLabelAndMessage label="Total:" id="plam26">
+                            <af:outputText value="#{bindings.others_total.inputValue}"
+                                           id="ot26"
+                                           inlineStyle="background-color:InactiveBorder; font-weight:bolder;"/>
+                          </af:panelLabelAndMessage>
+                        </af:group>
                       </f:facet>
                     </af:column>
                     <af:column sortProperty="ConsWithWastage" filterable="true"

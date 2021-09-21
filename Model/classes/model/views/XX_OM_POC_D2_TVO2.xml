@@ -97,7 +97,8 @@ FROM XX_OM_POC_D2_T XX_OM_POC_D2_TEO
     PrecisionRule="true"
     EntityAttrName="Total"
     EntityUsage="XX_OM_POC_D2_TEO2"
-    AliasName="TOTAL"/>
+    AliasName="TOTAL"
+    DefaultValue="0"/>
   <ViewAttribute
     Name="CostUom"
     PrecisionRule="true"
