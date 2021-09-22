@@ -483,7 +483,7 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
 
     public void setSessionValues(String userId, String orgId, String respId,
                                  String respApplId) {
-        userId = "5219";
+       
         if (userId != null) {
             FacesContext fctx = FacesContext.getCurrentInstance();
             ExternalContext ectx = fctx.getExternalContext();
